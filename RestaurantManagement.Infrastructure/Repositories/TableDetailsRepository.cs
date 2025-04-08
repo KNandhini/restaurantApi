@@ -1,0 +1,90 @@
+﻿using RestaurantManagement.Domain.Entities;
+using RestaurantManagement.Infrastructure.Constants;
+using RestaurantManagement.Infrastructure.DatabaseConnection;
+using RestaurantManagement.Infrastructure.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using Dapper;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RestaurantManagement.Infrastructure.Repositories
+{/// <summary>
+ /// Repository class for performing CRUD operations on TableDetails.
+ /// </summary>
+    public class TableDetailsRepository : ITableDetailsRepository
+    {
+        private readonly IDataBaseConnection _db;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TableDetailsRepository"/> class.
+        /// </summary>
+        /// <param name="_db">The database connection for accessing billing data.</param>
+        public TableDetailsRepository(IDataBaseConnection db)
+        {
+            this._db = db;
+        }
+
+        /// <inheritdoc/>
+        public async Task<IEnumerable<TableDetails>> GetTableDetailsDetails(int? id)
+        {
+            var spName = SPNames.SP_GETALLTABLEDETAILS; // Update the stored procedure name if necessary
+            return await Task.Factory.StartNew(() => _db.Connection.Query<TableDetails>(spName,
+                new { Id = id }, commandType: CommandType.StoredProcedure).ToList());
+        }
+
+        public async Task<TableDetails> InsertTableDetailsDetails(TableDetails TableDetails)
+        {
+            var spName = SPNames.SP_INSERTTABLEDETAILS; // Name of your stored procedure
+                                                             // Define parameters for the stored procedure
+
+
+
+            var parameters = new
+            {
+                TableId = TableDetails.TableId,
+                TableCode= TableDetails.TableCode,
+                CreatedBy = TableDetails.CreatedBy,
+
+            };
+
+            // Execute the stored procedure and retrieve the inserted data
+            var insertedData = await _db.Connection.QuerySingleOrDefaultAsync<TableDetails>(
+                spName,
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
+
+            return insertedData;
+
+
+        }
+        /// <inheritdoc/>
+        public async Task UpdateTableDetailsDetails(TableDetails TableDetails)
+        {
+            var spName = SPNames.SP_UPDATETABLEDETAILS; // Update the stored procedure name if necessary
+
+
+            var parameters = new
+            {
+                Id = TableDetails.Id,
+                TableId = TableDetails.TableId,
+                TableCode = TableDetails.TableCode,
+                ModifiedBy = TableDetails.ModifiedBy,
+
+            };
+            await Task.Factory.StartNew(() =>
+                _db.Connection.Execute(spName, parameters, commandType: CommandType.StoredProcedure));
+        }
+
+        public async Task<bool> DeleteTableDetailsDetails(int id)
+        {
+            var spName = SPNames.SP_DELETETABLEDETAILS; // Update the stored procedure name if necessary
+            await Task.Factory.StartNew(() =>
+                _db.Connection.Execute(spName, new { Id = id }, commandType: CommandType.StoredProcedure));
+            return true;
+        }
+    }
+}

@@ -25,6 +25,11 @@ services.AddScoped<IInventoryService, InventoryService>();
 services.AddScoped<IInventoryRepository, InventoryRepository>();
 services.AddScoped<IUserService, UserService>();
 services.AddScoped<IUserRepository, UserRepository>();
+
+services.AddScoped<ITableMasterService, TableMasterService>();
+services.AddScoped<ITableMasterRepository, TableMasterRepository>();
+services.AddScoped<ITableDetailsService, TableDetailsService>();
+services.AddScoped<ITableDetailsRepository, TableDetailsRepository>();
 services.AddScoped<IDataBaseConnection, DataBaseConnection>();
 // Add services to the container.
 

@@ -21,6 +21,8 @@ namespace RestaurantManagement.Application.Mappings
             CreateMap<Inventorys, InventoryDto > ().ReverseMap();
             CreateMap<InventoryCost, InventoryCostDto>().ReverseMap();
             CreateMap<Users, UserDto>().ReverseMap();
+            CreateMap<TableMaster, TableMasterDto>().ReverseMap();
+            CreateMap<TableDetails, TableDetailsDto>().ReverseMap();
         }
     }
 }
