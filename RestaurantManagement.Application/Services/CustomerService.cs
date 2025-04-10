@@ -62,7 +62,13 @@ namespace RestaurantManagement.Application.Services
         {
             return await _customerRepository.DeleteCustomerDetails(id);
         }
-        
-        
+
+        public async Task<IEnumerable<CustomerDto>> GetCustomerByPhoneNumber(string mobileNo)
+        {
+            var Customers = await _customerRepository.GetCustomerByPhoneNumber(mobileNo);
+
+            var CustomerDetails = _mapper.Map<IEnumerable<CustomerDto>>(Customers);
+            return CustomerDetails;
+        }
     }
 }

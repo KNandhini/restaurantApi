@@ -232,5 +232,31 @@ namespace RestaurantManagement.Api.Controllers
                 });
             }
         }
+        /// <summary>
+        /// Retrieves all customerDto.
+        /// </summary>
+        /// <returns>
+        /// The response with a collection of customerDto DTOs if successful, or a problem 
+        /// details object indicating the error if the operation fails.
+        /// </returns>
+        [HttpGet("getCustomerByNumber/{mobileNo}")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<CustomerDto>))]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.ServiceUnavailable)]
+        public async Task<IActionResult> GetCustomerByPhoneNumber(string mobileNo)
+        {
+            _logger.LogInformation("{MethodName} method is called", nameof(GetAllCustomers));
+            try
+            {
+                var result = await _customerService.GetCustomerByPhoneNumber(mobileNo);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
     }
 }

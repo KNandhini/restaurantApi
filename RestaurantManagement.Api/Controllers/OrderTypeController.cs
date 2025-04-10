@@ -9,7 +9,7 @@ namespace RestaurantManagement.Api.Controllers
     /// <summary>
     /// Controller for handling CRUD operations on orderTypeDto.
     /// </summary>
-    [Route("api/orderTypeDto")]
+    [Route("api/orderType")]
     [ApiController]
     public class OrderTypeController : RestaurantManagementControllerBase
     {
