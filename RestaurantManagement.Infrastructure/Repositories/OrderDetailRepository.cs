@@ -24,14 +24,14 @@ namespace RestaurantManagement.Infrastructure.Repositories
         }
 
         /// <inheritdoc/>
-        public async Task<IEnumerable<OrderDetails>> GetOrderDetailsDetails(int? id)
+        public async Task<IEnumerable<OrderDetail>> GetOrderDetailsDetails(int? id)
         {
             var spName = SPNames.SP_GETAllORDERDETAIL; // Update the stored procedure name if necessary
-            return await Task.Factory.StartNew(() => _db.Connection.Query<OrderDetails>(spName,
+            return await Task.Factory.StartNew(() => _db.Connection.Query<OrderDetail>(spName,
                 new { Id = id }, commandType: CommandType.StoredProcedure).ToList());
         }
 
-        public async Task<OrderDetails> InsertOrderDetailDetails(OrderDetails orderDetails)
+        public async Task<OrderDetail> InsertOrderDetailDetails(OrderDetail orderDetails)
         {
             var spName = SPNames.SP_INSERTORDERDETAIL; // Name of your stored procedure
                                                                  // Define parameters for the stored procedure
@@ -50,7 +50,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
             };
 
             // Execute the stored procedure and retrieve the inserted data
-            var insertedData = await _db.Connection.QuerySingleOrDefaultAsync<OrderDetails>(
+            var insertedData = await _db.Connection.QuerySingleOrDefaultAsync<OrderDetail>(
                 spName,
                 parameters,
                 commandType: CommandType.StoredProcedure
@@ -61,7 +61,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
         }
         /// <inheritdoc/>
-        public async Task UpdateOrderDetailDetails(OrderDetails orderDetails)
+        public async Task UpdateOrderDetailDetails(OrderDetail orderDetails)
         {
             var spName = SPNames.SP_UPDATEORDERDETAIL; // Update the stored procedure name if necessary
             

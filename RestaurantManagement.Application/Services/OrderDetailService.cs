@@ -41,7 +41,7 @@ namespace RestaurantManagement.Application.Services
         public async Task<OrderDetailDto> InsertOrderDetailDetails(OrderDetailDto orderDetailDto)
         {
 
-            var OrderDetail = _mapper.Map<OrderDetails>(orderDetailDto);
+            var OrderDetail = _mapper.Map<OrderDetail>(orderDetailDto);
             var insertedData = await _orderDetailRepository.InsertOrderDetailDetails(OrderDetail);
             if (insertedData == null)
             {
@@ -54,7 +54,7 @@ namespace RestaurantManagement.Application.Services
         /// <inheritdoc/>
         public async Task UpdateOrderDetailDetails(OrderDetailDto orderDetailDto)
         {
-            var OrderDetail = _mapper.Map<OrderDetails>(orderDetailDto);
+            var OrderDetail = _mapper.Map<OrderDetail>(orderDetailDto);
             await _orderDetailRepository.UpdateOrderDetailDetails(OrderDetail);
         }
         /// <inheritdoc/>
@@ -63,6 +63,9 @@ namespace RestaurantManagement.Application.Services
             return await _orderDetailRepository.DeleteOrderDetailDetails(id);
         }
 
-
+        public Task<IEnumerable<OrderDetailDto>> GetOrderDetailDetails(int? id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

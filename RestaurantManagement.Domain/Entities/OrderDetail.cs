@@ -117,3 +117,4 @@ namespace RestaurantManagement.Domain.Entities
         [JsonPropertyName("waiterName")]
         public string WaiterName { get; set; } = string.Empty;
     }
+}

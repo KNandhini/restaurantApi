@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace RestaurantManagement.Application.Dtos
 {
-    internal class OrderDetailDto
+    public class OrderDetailDto
     {
         /// <summary>
         /// Gets or sets the unique identifier for the order.

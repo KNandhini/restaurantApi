@@ -23,7 +23,7 @@ namespace RestaurantManagement.Infrastructure.Constants
         public const string SP_UPDATEINVENTORYDETAIL = "sp_UpdateInventoryMaster";
         public const string SP_DELETEINVENTORYDETAIL = "sp_DeleteInventoryMaster";
 
-        const string SP_GETAllORDERDETAIL = "sp_GetOrderDetails";
+        public const string SP_GETAllORDERDETAIL = "sp_GetOrderDetails";
         public const string SP_INSERTORDERDETAIL = "sp_InsertOrderDetails";
         public const string SP_UPDATEORDERDETAIL = "sp_UpdateOrderDetails";
         public const string SP_DELETEORDERDETAIL = "[sp_DeleteOrderDetails]";
