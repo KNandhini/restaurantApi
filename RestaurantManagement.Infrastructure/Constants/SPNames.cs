@@ -17,6 +17,9 @@ namespace RestaurantManagement.Infrastructure.Constants
         public const string SP_INSERTCUSTOMERDETAIL = "[sp_InsertCustomerMaster]";
         public const string SP_UPDATECUSTOMERDETAIL = "sp_UpdateCustomerMaster";
         public const string SP_DELETECUSTOMERDETAIL = "sp_DeleteCustomerMaster";
+        public const string SP_GETAllCUSTOMERBYPHONE = "sp_GetCustomerByPhoneNo";
+
+        
 
         public const string SP_GETAllINVENTORYDETAIL = "sp_GetInventoryMaster";
         public const string SP_INSERTINVENTORYDETAIL = "[sp_InsertInventoryMaster]";

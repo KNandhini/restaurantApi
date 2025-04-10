@@ -88,5 +88,12 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 _db.Connection.Execute(spName, new { Id = id }, commandType: CommandType.StoredProcedure));
             return true;
         }
+
+        public async Task<IEnumerable<Customers>> GetCustomerByPhoneNumber(string mobileNo)
+        {
+            var spName = SPNames.SP_GETAllCUSTOMERBYPHONE; // Update the stored procedure name if necessary
+            return await Task.Factory.StartNew(() => _db.Connection.Query<Customers>(spName,
+                new { MobileNo = mobileNo }, commandType: CommandType.StoredProcedure).ToList());
+        }
     }
 }
