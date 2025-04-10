@@ -63,6 +63,12 @@ namespace RestaurantManagement.Infrastructure.Constants
         public const string SP_UPDATETABLEDETAILS = "sp_UpdateTABLEMASTERMaster";
         public const string SP_DELETETABLEDETAILS = "sp_DeleteTABLEMASTERMaster";
 
+
+        public const string SP_GETAllORDERTYPEMASTER = "sp_GetOrderTypeMaster";
+        public const string SP_INSERTORDERTYPEMASTER = "[sp_InsertOrderTypeMaster]";
+        public const string SP_UPDATEORDERTYPEMASTER = "sp_UpdateOrderTypeMaster";
+        public const string SP_DELETEORDERTYPEMASTER = "sp_DeleteOrderTypeMaster";
+
     }
 
 

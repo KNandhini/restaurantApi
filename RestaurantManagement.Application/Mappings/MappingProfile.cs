@@ -23,6 +23,7 @@ namespace RestaurantManagement.Application.Mappings
             CreateMap<Users, UserDto>().ReverseMap();
             CreateMap<TableMaster, TableMasterDto>().ReverseMap();
             CreateMap<TableDetails, TableDetailsDto>().ReverseMap();
+            CreateMap<OrderTypes, OrderTypeDto>().ReverseMap();
         }
     }
 }
