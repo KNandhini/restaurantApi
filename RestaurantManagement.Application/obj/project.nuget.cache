@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k3S96P1eMxI=",
+  "dgSpecHash": "vIxBPGjBj6U=",
   "success": true,
-  "projectFilePath": "C:\\Users\\loret\\source\\repos\\RestaurantManagement\\RestaurantManagement.Application\\RestaurantManagement.Application.csproj",
+  "projectFilePath": "C:\\Users\\loret\\Source\\Repos\\restaurantApi\\RestaurantManagement.Application\\RestaurantManagement.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\loret\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\loret\\.nuget\\packages\\bcrypt.net\\0.1.0\\bcrypt.net.0.1.0.nupkg.sha512",

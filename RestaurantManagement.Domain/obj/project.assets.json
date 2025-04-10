@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\loret\\source\\repos\\RestaurantManagement\\RestaurantManagement.Domain\\RestaurantManagement.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\loret\\Source\\Repos\\restaurantApi\\RestaurantManagement.Domain\\RestaurantManagement.Domain.csproj",
       "projectName": "RestaurantManagement.Domain",
-      "projectPath": "C:\\Users\\loret\\source\\repos\\RestaurantManagement\\RestaurantManagement.Domain\\RestaurantManagement.Domain.csproj",
+      "projectPath": "C:\\Users\\loret\\Source\\Repos\\restaurantApi\\RestaurantManagement.Domain\\RestaurantManagement.Domain.csproj",
       "packagesPath": "C:\\Users\\loret\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\loret\\source\\repos\\RestaurantManagement\\RestaurantManagement.Domain\\obj\\",
+      "outputPath": "C:\\Users\\loret\\Source\\Repos\\restaurantApi\\RestaurantManagement.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\loret\\AppData\\Roaming\\NuGet\\NuGet.Config",

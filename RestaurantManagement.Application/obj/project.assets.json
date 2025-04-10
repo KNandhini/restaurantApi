@@ -2263,11 +2263,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\loret\\source\\repos\\RestaurantManagement\\RestaurantManagement.Application\\RestaurantManagement.Application.csproj",
+      "projectUniqueName": "C:\\Users\\loret\\Source\\Repos\\restaurantApi\\RestaurantManagement.Application\\RestaurantManagement.Application.csproj",
       "projectName": "RestaurantManagement.Application",
-      "projectPath": "C:\\Users\\loret\\source\\repos\\RestaurantManagement\\RestaurantManagement.Application\\RestaurantManagement.Application.csproj",
+      "projectPath": "C:\\Users\\loret\\Source\\Repos\\restaurantApi\\RestaurantManagement.Application\\RestaurantManagement.Application.csproj",
       "packagesPath": "C:\\Users\\loret\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\loret\\source\\repos\\RestaurantManagement\\RestaurantManagement.Application\\obj\\",
+      "outputPath": "C:\\Users\\loret\\Source\\Repos\\restaurantApi\\RestaurantManagement.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\loret\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2285,11 +2285,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\loret\\source\\repos\\RestaurantManagement\\RestaurantManagement.Domain\\RestaurantManagement.Domain.csproj": {
-              "projectPath": "C:\\Users\\loret\\source\\repos\\RestaurantManagement\\RestaurantManagement.Domain\\RestaurantManagement.Domain.csproj"
+            "C:\\Users\\loret\\Source\\Repos\\restaurantApi\\RestaurantManagement.Domain\\RestaurantManagement.Domain.csproj": {
+              "projectPath": "C:\\Users\\loret\\Source\\Repos\\restaurantApi\\RestaurantManagement.Domain\\RestaurantManagement.Domain.csproj"
             },
-            "C:\\Users\\loret\\source\\repos\\RestaurantManagement\\RestaurantManagement.Infrastructure\\RestaurantManagement.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\loret\\source\\repos\\RestaurantManagement\\RestaurantManagement.Infrastructure\\RestaurantManagement.Infrastructure.csproj"
+            "C:\\Users\\loret\\Source\\Repos\\restaurantApi\\RestaurantManagement.Infrastructure\\RestaurantManagement.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\loret\\Source\\Repos\\restaurantApi\\RestaurantManagement.Infrastructure\\RestaurantManagement.Infrastructure.csproj"
             }
           }
         }

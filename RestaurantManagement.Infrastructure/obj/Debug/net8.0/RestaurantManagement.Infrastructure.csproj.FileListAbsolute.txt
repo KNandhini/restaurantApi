@@ -13,3 +13,9 @@ C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Infrastruc
 C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Infrastructure\obj\Debug\net8.0\refint\RestaurantManagement.Infrastructure.dll
 C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Infrastructure\obj\Debug\net8.0\RestaurantManagement.Infrastructure.pdb
 C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Infrastructure\obj\Debug\net8.0\ref\RestaurantManagement.Infrastructure.dll
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Infrastructure\obj\Debug\net8.0\RestaurantManagement.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Infrastructure\obj\Debug\net8.0\RestaurantManagement.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Infrastructure\obj\Debug\net8.0\RestaurantManagement.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Infrastructure\obj\Debug\net8.0\RestaurantManagement.Infrastructure.AssemblyInfo.cs
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Infrastructure\obj\Debug\net8.0\RestaurantManagement.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Infrastructure\obj\Debug\net8.0\RestaurantManagement.Infrastructure.sourcelink.json

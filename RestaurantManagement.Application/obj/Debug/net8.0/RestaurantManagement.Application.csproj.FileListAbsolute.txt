@@ -15,3 +15,9 @@ C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Applicatio
 C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Application\obj\Debug\net8.0\refint\RestaurantManagement.Application.dll
 C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Application\obj\Debug\net8.0\RestaurantManagement.Application.pdb
 C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Application\obj\Debug\net8.0\ref\RestaurantManagement.Application.dll
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Application\obj\Debug\net8.0\RestaurantManagement.Application.csproj.AssemblyReference.cache
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Application\obj\Debug\net8.0\RestaurantManagement.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Application\obj\Debug\net8.0\RestaurantManagement.Application.AssemblyInfoInputs.cache
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Application\obj\Debug\net8.0\RestaurantManagement.Application.AssemblyInfo.cs
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Application\obj\Debug\net8.0\RestaurantManagement.Application.csproj.CoreCompileInputs.cache
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Application\obj\Debug\net8.0\RestaurantManagement.Application.sourcelink.json
