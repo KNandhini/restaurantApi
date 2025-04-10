@@ -25,6 +25,9 @@ services.AddScoped<IInventoryService, InventoryService>();
 services.AddScoped<IInventoryRepository, InventoryRepository>();
 services.AddScoped<IUserService, UserService>();
 services.AddScoped<IUserRepository, UserRepository>();
+services.AddScoped<IOrderTypeService, OrderTypeService>();
+services.AddScoped<IOrderTypeRepository, OrderTypeRepository>();
+
 
 services.AddScoped<ITableMasterService, TableMasterService>();
 services.AddScoped<ITableMasterRepository, TableMasterRepository>();
