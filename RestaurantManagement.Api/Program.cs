@@ -29,8 +29,8 @@ services.AddScoped<IUserService, UserService>();
 services.AddScoped<IUserRepository, UserRepository>();
 services.AddScoped<IOrderTypeService, OrderTypeService>();
 services.AddScoped<IOrderTypeRepository, OrderTypeRepository>();
-
-
+services.AddScoped<IDiscountService, DiscountService>();
+services.AddScoped<IDiscountRepository, DiscountRepository>();
 services.AddScoped<IRoleService, RoleService>();
 services.AddScoped<IRoleRepository, RoleRepository>();
 services.AddScoped<ITableMasterService, TableMasterService>();
