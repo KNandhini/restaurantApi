@@ -20,7 +20,7 @@ namespace RestaurantManagement.Infrastructure.Interfaces
       /// <returns>
       /// The task result contains a collection of OrderDetails if successful, or null if no OrderDetailss match the provided identifier.
       /// </returns>
-        Task<IEnumerable<OrderDetail>> GetOrderDetailsDetails(int? id);
+        Task<OrderDetail> GetOrderDetailsDetails(int? id);
         /// <summary>
         /// Inserts a new OrderDetails.
         /// </summary>
@@ -28,7 +28,7 @@ namespace RestaurantManagement.Infrastructure.Interfaces
         /// <returns>
         /// Not returns anything.
         /// </returns>
-        Task<OrderDetail> InsertOrderDetailDetails(OrderDetail orderDetails);
+        Task<OrderDetail> InsertOrderDetails(OrderDetail orderDetails);
         /// <summary>
         /// Updates an existing OrderDetails.
         /// </summary>

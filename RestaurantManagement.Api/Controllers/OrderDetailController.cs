@@ -44,7 +44,7 @@ namespace RestaurantManagement.Api.Controllers
             _logger.LogInformation("{MethodName} method is called", nameof(GetAllOrderDetails));
             try
             {
-                var result = await _orderDetailService.GetOrderDetailDetails(null);
+                var result = await _orderDetailService.GetOrderDetailsDetails(null);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -78,13 +78,20 @@ namespace RestaurantManagement.Api.Controllers
             }
             try
             {
-                var orderDetailDto = await _orderDetailService.GetOrderDetailDetails(id);
-                return orderDetailDto.Count() == 1 ? Ok(orderDetailDto) : StatusCode(StatusCodes.Status404NotFound);
+                var orderDetailDto = await _orderDetailService.GetOrderDetailsDetails(id);
+
+                if (orderDetailDto == null)
+                    return StatusCode(StatusCodes.Status404NotFound, "Order details not found.");
+
+                return orderDetailDto.Id != 0
+                    ? Ok(orderDetailDto)
+                    : StatusCode(StatusCodes.Status404NotFound, "Order ID not valid.");
             }
             catch (Exception ex)
             {
-                return InternalServerError(ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
+
         }
         /// <summary>
         /// Inserts a new orderDetailDto.
@@ -106,7 +113,7 @@ namespace RestaurantManagement.Api.Controllers
             try
             {
                 // Insert the orderDetailDto and retrieve the data
-                var OrderDetail = await _orderDetailService.InsertOrderDetailDetails(orderDetailDto);
+                var OrderDetail = await _orderDetailService.InsertOrderDetails(orderDetailDto);
 
 
                 return CreatedAtAction(nameof(GetAllOrderDetails), new { id = orderDetailDto.Id }, OrderDetail);
@@ -150,7 +157,7 @@ namespace RestaurantManagement.Api.Controllers
         public async Task<IActionResult> UpdateOrderDetail([FromBody] OrderDetailDto orderDetailDto)
         {
             _logger.LogInformation("{MethodName} method is called", nameof(UpdateOrderDetail));
-            var OrderDetails = await _orderDetailService.GetOrderDetailDetails((int?)orderDetailDto.Id);
+            var OrderDetails = await _orderDetailService.GetOrderDetailsDetails((int?)orderDetailDto.Id);
             if (OrderDetails == null)
             {
                 return NotFound();
@@ -200,7 +207,7 @@ namespace RestaurantManagement.Api.Controllers
         public async Task<IActionResult> DeleteOrderDetail(int id)
         {
             _logger.LogInformation("{MethodName} method is called for the id: {id}", nameof(DeleteOrderDetail), id);
-            var orderDetailDto = await _orderDetailService.GetOrderDetailDetails(id);
+            var orderDetailDto = await _orderDetailService.GetOrderDetailsDetails(id);
             if (orderDetailDto == null)
             {
                 return NotFound();
@@ -232,5 +239,6 @@ namespace RestaurantManagement.Api.Controllers
                 });
             }
         }
+
     }
 }
