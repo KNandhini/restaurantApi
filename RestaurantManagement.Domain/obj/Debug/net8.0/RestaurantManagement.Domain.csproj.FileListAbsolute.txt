@@ -1,0 +1,16 @@
+C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Domain\bin\Debug\net8.0\RestaurantManagement.Domain.deps.json
+C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Domain\bin\Debug\net8.0\RestaurantManagement.Domain.dll
+C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Domain\bin\Debug\net8.0\RestaurantManagement.Domain.pdb
+C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Domain\obj\Debug\net8.0\RestaurantManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Domain\obj\Debug\net8.0\RestaurantManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Domain\obj\Debug\net8.0\RestaurantManagement.Domain.AssemblyInfo.cs
+C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Domain\obj\Debug\net8.0\RestaurantManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Domain\obj\Debug\net8.0\RestaurantManagement.Domain.dll
+C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Domain\obj\Debug\net8.0\refint\RestaurantManagement.Domain.dll
+C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Domain\obj\Debug\net8.0\RestaurantManagement.Domain.pdb
+C:\Users\loret\source\repos\RestaurantManagement\RestaurantManagement.Domain\obj\Debug\net8.0\ref\RestaurantManagement.Domain.dll
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Domain\obj\Debug\net8.0\RestaurantManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Domain\obj\Debug\net8.0\RestaurantManagement.Domain.AssemblyInfoInputs.cache
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Domain\obj\Debug\net8.0\RestaurantManagement.Domain.AssemblyInfo.cs
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Domain\obj\Debug\net8.0\RestaurantManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\loret\Source\Repos\restaurantApi\RestaurantManagement.Domain\obj\Debug\net8.0\RestaurantManagement.Domain.sourcelink.json

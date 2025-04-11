@@ -60,6 +60,15 @@ namespace RestaurantManagement.Infrastructure.Constants
         public const string SP_DELETEUSERMASTER = "sp_DeleteUserMaster";
         public const string SP_UPDATEPASSWORD = "sp_UpdatePassword";
 
+        public const string SP_GETAllROLEMASTER = "[sp_GetRoleMaster]";
+        public const string SP_INSERTROLEMASTER = "[sp_InsertRoleMaster]";
+        public const string SP_UPDATEROLEMASTER = "sp_UpdateRoleMaster";
+        public const string SP_DELETEROLEMASTER = "sp_DeleteRoleMaster";
+
+        public const string SP_GETAllDISCOUNTMASTER = "sp_GetDiscountMaster";
+        public const string SP_INSERTDISCOUNTMASTER = "sp_InsertDiscountMaster";
+        public const string SP_UPDATEDISCOUNTMASTER = "sp_UpdateDiscountMaster";
+        public const string SP_DELETEDISCOUNTMASTER = "sp_DeleteDiscountMaster";
 
 
         public const string SP_GETALLTABLEMASTERDETAIL = "sp_GetTableMaster";
