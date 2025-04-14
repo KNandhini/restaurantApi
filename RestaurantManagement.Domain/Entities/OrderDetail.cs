@@ -14,7 +14,7 @@ namespace RestaurantManagement.Domain.Entities
         /// Unique ID of the order item.
         /// </summary>
         [JsonPropertyName("id")]
-        public int Id { get; set; } = 0;
+        public int? Id { get; set; } = 0;
 
         /// <summary>
         /// Associated order ID.
@@ -31,7 +31,7 @@ namespace RestaurantManagement.Domain.Entities
         [JsonPropertyName("waiterId")]
         public int WaiterId { get; set; } = 0;
         [JsonPropertyName("orderTypeId")]
-        public int OrderTypeId { get; set; } = 0;
+        public int? OrderTypeId { get; set; } = 0;
         [JsonPropertyName("tableId")]
         public int TableId { get; set; } = 0;
         [JsonPropertyName("customerId")]
@@ -41,7 +41,7 @@ namespace RestaurantManagement.Domain.Entities
         /// Username of the person who created the order.
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string CreatedBy { get; set; } = string.Empty;
+        public string? CreatedBy { get; set; } = string.Empty;
 
         /// <summary>
         /// Date and time the item was created.
@@ -65,26 +65,36 @@ namespace RestaurantManagement.Domain.Entities
         /// Category of the table.
         /// </summary>
         [JsonPropertyName("tableCatagory")]
-        public string TableCatagory { get; set; } = string.Empty;
+        public string? TableCatagory { get; set; } = string.Empty;
 
         /// <summary>
         /// Code of the table.
         /// </summary>
         [JsonPropertyName("tableCode")]
-        public string TableCode { get; set; } = string.Empty;
+        public string? TableCode { get; set; } = string.Empty;
 
         /// <summary>
         /// Name of the customer.
         /// </summary>
         [JsonPropertyName("customerName")]
-        public string CustomerName { get; set; } = string.Empty;
+        public string? CustomerName { get; set; } = string.Empty;
 
         /// <summary>
         /// Address of the customer.
         /// </summary>
         [JsonPropertyName("customerAddress")]
         public string CustomerAddress { get; set; } = string.Empty;
-
+        /// <summary>
+        /// Address of the customer.
+        /// </summary>
+        [JsonPropertyName("customerLocality")]
+        public string CustomerLocality { get; set; } = string.Empty;
+        /// <summary>
+        /// Address of the customer.
+        /// </summary>
+        [JsonPropertyName("customerInfo")]
+        public string CustomerInfo { get; set; } = string.Empty;
+        
         /// <summary>
         /// Phone number of the customer.
         /// </summary>
@@ -107,7 +117,7 @@ namespace RestaurantManagement.Domain.Entities
         /// Name of the waiter.
         /// </summary>
         [JsonPropertyName("waiterName")]
-        public string WaiterName { get; set; } = string.Empty;
+        public string? WaiterName { get; set; } = string.Empty;
 
 
 
@@ -136,13 +146,13 @@ namespace RestaurantManagement.Domain.Entities
         /// Code of the item.
         /// </summary>
         [JsonPropertyName("itemCode")]
-        public string ItemCode { get; set; } = string.Empty;
+        public string? ItemCode { get; set; } = string.Empty;
 
         /// <summary>
         /// Name of the item.
         /// </summary>
         [JsonPropertyName("itemName")]
-        public string ItemName { get; set; } = string.Empty;
+        public string? ItemName { get; set; } = string.Empty;
 
         /// <summary>
         /// Quantity of the item.
@@ -213,19 +223,19 @@ namespace RestaurantManagement.Domain.Entities
         /// the user who created the order item.
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
 
         /// <summary>
         /// date and time the order item was created.
         /// </summary>
         [JsonPropertyName("createdDate")]
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime? CreatedDate { get; set; } = DateTime.Now;
 
         /// <summary>
         /// the user who last modified the order item.
         /// </summary>
         [JsonPropertyName("modifiedBy")]
-        public string ModifiedBy { get; set; }
+        public string? ModifiedBy { get; set; }
 
         /// <summary>
         /// date and time the order item was last modified.

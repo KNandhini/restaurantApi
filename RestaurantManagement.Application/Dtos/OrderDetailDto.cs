@@ -13,7 +13,7 @@ namespace RestaurantManagement.Application.Dtos
         /// Unique ID of the order item.
         /// </summary>
         [JsonPropertyName("id")]
-        public int Id { get; set; } = 0;
+        public int? Id { get; set; } = 0;
 
         /// <summary>
         /// Associated order ID.
@@ -40,37 +40,37 @@ namespace RestaurantManagement.Application.Dtos
         /// Username of the person who created the order.
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string CreatedBy { get; set; } = string.Empty;
+        public string? CreatedBy { get; set; } = string.Empty;
 
         /// <summary>
         /// Date and time the item was created.
         /// </summary>
         [JsonPropertyName("createdDate")]
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime? CreatedDate { get; set; } = DateTime.Now;
 
         /// <summary>
         /// Username of the person who modified the order.
         /// </summary>
         [JsonPropertyName("modifiedBy")]
-        public string ModifiedBy { get; set; } = string.Empty;
+        public string? ModifiedBy { get; set; } = string.Empty;
 
         /// <summary>
         /// Date and time the item was last modified.
         /// </summary>
         [JsonPropertyName("modifiedDate")]
-        public DateTime ModifiedDate { get; set; } = DateTime.Now;
+        public DateTime? ModifiedDate { get; set; } = DateTime.Now;
 
         /// <summary>
         /// Category of the table.
         /// </summary>
         [JsonPropertyName("tableCatagory")]
-        public string TableCatagory { get; set; } = string.Empty;
+        public string? TableCatagory { get; set; } = string.Empty;
 
         /// <summary>
         /// Code of the table.
         /// </summary>
         [JsonPropertyName("tableCode")]
-        public string TableCode { get; set; } = string.Empty;
+        public string? TableCode { get; set; } = string.Empty;
 
         /// <summary>
         /// Name of the customer.
@@ -100,13 +100,13 @@ namespace RestaurantManagement.Application.Dtos
         /// Subtype of the order.
         /// </summary>
         [JsonPropertyName("orderSubType")]
-        public string OrderSubType { get; set; } = string.Empty;
+        public string? OrderSubType { get; set; } = string.Empty;
 
         /// <summary>
         /// Name of the waiter.
         /// </summary>
         [JsonPropertyName("waiterName")]
-        public string WaiterName { get; set; } = string.Empty;
+        public string? WaiterName { get; set; } = string.Empty;
 
     
 
@@ -136,13 +136,13 @@ namespace RestaurantManagement.Application.Dtos
         /// Code of the item.
         /// </summary>
         [JsonPropertyName("itemCode")]
-        public string ItemCode { get; set; } = string.Empty;
+        public string? ItemCode { get; set; } = string.Empty;
 
         /// <summary>
         /// Name of the item.
         /// </summary>
         [JsonPropertyName("itemName")]
-        public string ItemName { get; set; } = string.Empty;
+        public string? ItemName { get; set; } = string.Empty;
 
         /// <summary>
         /// Quantity of the item.
@@ -215,19 +215,19 @@ namespace RestaurantManagement.Application.Dtos
         /// The user who created the order item.
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
 
         /// <summary>
         /// Date and time the order item was created.
         /// </summary>
         [JsonPropertyName("createdDate")]
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime? CreatedDate { get; set; } = DateTime.Now;
 
         /// <summary>
         /// The user who last modified the order item.
         /// </summary>
         [JsonPropertyName("modifiedBy")]
-        public string ModifiedBy { get; set; }
+        public string? ModifiedBy { get; set; }
 
         /// <summary>
         /// Date and time the order item was last modified.

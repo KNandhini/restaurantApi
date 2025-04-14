@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Data.SqlClient;
 using System.Data.Common;
+using System.Text.Json;
 
 namespace RestaurantManagement.Infrastructure.Repositories
 {
@@ -87,7 +88,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
                         var item = new OrderItem
                         {
-                            Id = Convert.ToInt32(reader["itemId"]),
+                            Id = Convert.ToInt32(reader["id"]),
                             OrderId = Convert.ToInt32(reader["orderId"]),
                             ItemId = Convert.ToInt32(reader["itemId"]),
                             ItemCode = reader["itemCode"]?.ToString(),
@@ -121,57 +122,63 @@ namespace RestaurantManagement.Infrastructure.Repositories
         {
             var spNameInsertOrderDetails = SPNames.SP_INSERTORDERDETAIL; // Name of your stored procedure
                                                                          // Define parameters for the stored procedure
-            var spNameInsertOrderItems = SPNames.SP_INSERTORDERDETAIL;
-            OrderDetail insertedData = new OrderDetail();
-            var sendToDB = new ArrayList();
-            if (orderDetails.OrderId == 0)
-            {
+          //  var spNameInsertOrderItems = SPNames.SP_INSERTORDERDETAIL;
+           // OrderDetail insertedData = new OrderDetail();
+            string orderItemsJson = JsonSerializer.Serialize(orderDetails.ItemDetails);
+         //   var sendToDB = new ArrayList();
+         
                 var parameters = new
                 {
-                    CustomerId = orderDetails.CustomerId,
+                    CustomerName = orderDetails.CustomerName,
+                    CustomerAddress = orderDetails.CustomerAddress,
+                    CustomerPhoneNo = orderDetails.CustomerPhoneNo,
+                    CustomerLocality = orderDetails.CustomerLocality,
+                    CustomerInfo =orderDetails.CustomerInfo,
+                    OrderId =orderDetails.OrderId,
+                    OrderItems =orderItemsJson,
                     TableId = orderDetails.TableId,
                     OrderType = orderDetails.OrderType,
                     WaiterId = orderDetails.WaiterId,
                     CreatedBy = orderDetails.CreatedBy,
                 };
 
-                insertedData = await _db.Connection.QuerySingleOrDefaultAsync<OrderDetail>(
-                    spNameInsertOrderDetails,
-                    parameters,
-                    commandType: CommandType.StoredProcedure
-                ) ?? new OrderDetail(); // fallback in case of null
+                int? insertedData = await _db.Connection.QuerySingleOrDefaultAsync<int?>(
+                   spNameInsertOrderDetails,
+                   parameters,
+                   commandType: CommandType.StoredProcedure
+                );
 
 
-                orderDetails.OrderId = insertedData.OrderId;
-               
-            }
+
+            orderDetails.OrderId = insertedData??0;
+                 
            
 
-            foreach (var item in orderDetails.ItemDetails)
-            {
-                sendToDB.Add(
-                    new
-                    {
-                        OrderId = orderDetails?.OrderId,
-                        ItemId = item.ItemId,
-                        Qty = item.Qty,
-                        Price = item.Price,
-                        IsSave = item.IsSave,
-                        IsSavePrint=item.IsSavePrint,
-                        IsSaveEBill=item.IsSaveEBill,
-                        IsHold=item.IsHold,
-                        IsKOT=item.IsKOT,
-                        IsKOTPrint=item.IsKOTPrint,
-                        IsFoodReceived=item.IsFoodReceived,
-                        CreatedBy = item.CreatedBy,
+            //foreach (var item in orderDetails.ItemDetails)
+            //{
+            //    sendToDB.Add(
+            //        new
+            //        {
+            //            OrderId = orderDetails?.OrderId,
+            //            ItemId = item.ItemId,
+            //            Qty = item.Qty,
+            //            Price = item.Price,
+            //            IsSave = item.IsSave,
+            //            IsSavePrint=item.IsSavePrint,
+            //            IsSaveEBill=item.IsSaveEBill,
+            //            IsHold=item.IsHold,
+            //            IsKOT=item.IsKOT,
+            //            IsKOTPrint=item.IsKOTPrint,
+            //            IsFoodReceived=item.IsFoodReceived,
+            //            CreatedBy = item.CreatedBy,
                        
-                    });
+            //        });
 
-            }
-             await Task.Factory.StartNew(() =>
-                _db.Connection.Execute(spNameInsertOrderItems, sendToDB.ToArray(), commandType: CommandType.StoredProcedure));
+            //}
+            // await Task.Factory.StartNew(() =>
+            //    _db.Connection.Execute(spNameInsertOrderItems, sendToDB.ToArray(), commandType: CommandType.StoredProcedure));
 
-            return insertedData;
+            return orderDetails;
 
 
         }
