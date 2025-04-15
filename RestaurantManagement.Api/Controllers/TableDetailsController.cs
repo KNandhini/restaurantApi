@@ -42,7 +42,7 @@ namespace RestaurantManagement.Api.Controllers
         _logger.LogInformation("{MethodName} method is called", nameof(GetAllTableDetails));
         try
         {
-            var result = await _TableDetailsService.GetTableDetailsDetails(null);
+            var result = await _TableDetailsService.GetTableDetails(null);
             return Ok(result);
         }
         catch (Exception ex)
@@ -51,16 +51,42 @@ namespace RestaurantManagement.Api.Controllers
         }
     }
 
+        /// <summary>
+        /// Retrieves all mapping TableDetailsDto.
+        /// </summary>
+        /// <returns>
+        /// The response with a collection of TableDetailsDto DTOs if successful, or a problem 
+        /// details object indicating the error if the operation fails.
+        /// </returns>
+        [HttpGet("tableMapping")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<TableMappingDetailsDto>))]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.InternalServerError)]
+        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.ServiceUnavailable)]
+        public async Task<IActionResult> GetAllMappingTableDetails()
+        {
+            _logger.LogInformation("{MethodName} method is called", nameof(GetAllMappingTableDetails));
+            try
+            {
+                var result = await _TableDetailsService.GetMappingTableDetails(null);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
 
-    /// <summary>
-    /// Retrieves a TableDetailsDto by its unique identifier.
-    /// </summary>
-    /// <param name="id">The unique identifier of the TableDetailsDto.</param>
-    /// <returns>
-    /// The response with the TableDetailsDto DTO if successful, or a problem details 
-    /// object indicating the error if the operation fails.
-    /// </returns>
-    [HttpGet("{id}")]
+        /// <summary>
+        /// Retrieves a TableDetailsDto by its unique identifier.
+        /// </summary>
+        /// <param name="id">The unique identifier of the TableDetailsDto.</param>
+        /// <returns>
+        /// The response with the TableDetailsDto DTO if successful, or a problem details 
+        /// object indicating the error if the operation fails.
+        /// </returns>
+        [HttpGet("{id}")]
     [ProducesResponseType(200, Type = typeof(TableDetailsDto))]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.NotFound)]
@@ -76,7 +102,7 @@ namespace RestaurantManagement.Api.Controllers
         }
         try
         {
-            var TableDetailsDto = await _TableDetailsService.GetTableDetailsDetails(id);
+            var TableDetailsDto = await _TableDetailsService.GetTableDetails(id);
             return TableDetailsDto.Count() == 1 ? Ok(TableDetailsDto) : StatusCode(StatusCodes.Status404NotFound);
         }
         catch (Exception ex)
@@ -104,7 +130,7 @@ namespace RestaurantManagement.Api.Controllers
         try
         {
             // Insert the TableDetailsDto and retrieve the data
-            var TableDetailsDetail = await _TableDetailsService.InsertTableDetailsDetails(TableDetailsDto);
+            var TableDetailsDetail = await _TableDetailsService.InsertTableDetails(TableDetailsDto);
 
 
             return CreatedAtAction(nameof(GetAllTableDetails), new { id = TableDetailsDto.Id }, TableDetailsDetail);
@@ -148,15 +174,15 @@ namespace RestaurantManagement.Api.Controllers
     public async Task<IActionResult> UpdateTableDetails([FromBody] TableDetailsDto TableDetailsDto)
     {
         _logger.LogInformation("{MethodName} method is called", nameof(UpdateTableDetails));
-        var TableDetailsDetails = await _TableDetailsService.GetTableDetailsDetails((int?)TableDetailsDto.Id);
-        if (TableDetailsDetails == null)
+        var TableDetails = await _TableDetailsService.GetTableDetails((int?)TableDetailsDto.Id);
+        if (TableDetails == null)
         {
             return NotFound();
         }
 
         try
         {
-            await _TableDetailsService.UpdateTableDetailsDetails(TableDetailsDto);
+            await _TableDetailsService.UpdateTableDetails(TableDetailsDto);
             return NoContent();
         }
         catch (SqlException ex)
@@ -198,7 +224,7 @@ namespace RestaurantManagement.Api.Controllers
     public async Task<IActionResult> DeleteTableDetails(int id)
     {
         _logger.LogInformation("{MethodName} method is called for the id: {id}", nameof(DeleteTableDetails), id);
-        var TableDetailsDto = await _TableDetailsService.GetTableDetailsDetails(id);
+        var TableDetailsDto = await _TableDetailsService.GetTableDetails(id);
         if (TableDetailsDto == null)
         {
             return NotFound();
@@ -206,7 +232,7 @@ namespace RestaurantManagement.Api.Controllers
 
         try
         {
-            await _TableDetailsService.DeleteTableDetailsDetails(id);
+            await _TableDetailsService.DeleteTableDetails(id);
             return NoContent();
         }
         catch (SqlException ex)
