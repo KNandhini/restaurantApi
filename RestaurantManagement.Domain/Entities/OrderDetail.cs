@@ -119,7 +119,76 @@ namespace RestaurantManagement.Domain.Entities
         [JsonPropertyName("waiterName")]
         public string? WaiterName { get; set; } = string.Empty;
 
+        /// <summary>
+        /// Gets or sets the bill ID applied to the bill.
+        /// </summary>
+        [JsonPropertyName("billId")]
+        public int? BillId { get; set; }
+        /// <summary>
+        /// Gets or sets the discount ID applied to the bill.
+        /// </summary>
+        [JsonPropertyName("discountId")]
+        public int? DiscountId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the mode of payment used.
+        /// </summary>
+        [JsonPropertyName("paymentMode")]
+        public string PaymentMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether parcel is required.
+        /// </summary>
+        [JsonPropertyName("isParcelRequired")]
+        public bool? IsParcelRequired { get; set; }
+
+        /// <summary>
+        /// Gets or sets the amount charged for parcel.
+        /// </summary>
+        [JsonPropertyName("parcelAmount")]
+        public decimal? ParcelAmount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the service charge amount.
+        /// </summary>
+        [JsonPropertyName("serviceCharge")]
+        public decimal? ServiceCharge { get; set; }
+
+        /// <summary>
+        /// Gets or sets the discount amount.
+        /// </summary>
+        [JsonPropertyName("discountAmount")]
+        public decimal? DiscountAmount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the net amount after discounts and charges.
+        /// </summary>
+        [JsonPropertyName("netAmount")]
+        public decimal? NetAmount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the CGST (Central GST) amount.
+        /// </summary>
+        [JsonPropertyName("cgst")]
+        public decimal? Cgst { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SGST (State GST) amount.
+        /// </summary>
+        [JsonPropertyName("sgst")]
+        public decimal? Sgst { get; set; }
+
+        /// <summary>
+        /// Gets or sets the total amount including all charges.
+        /// </summary>
+        [JsonPropertyName("grandTotal")]
+        public decimal? GrandTotal { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the payment is completed.
+        /// </summary>
+        [JsonPropertyName("isPaymentDone")]
+        public bool? IsPaymentDone { get; set; }
 
 
     }
@@ -169,49 +238,49 @@ namespace RestaurantManagement.Domain.Entities
         /// <summary>
         /// Indicates if the order is saved.
         /// </summary>
-        [JsonPropertyName("isSave")]
-        public bool IsSave { get; set; } = false;
+        [JsonPropertyName("status")]
+        public string Status { get; set; } = string.Empty;
 
-        /// <summary>
-        /// Indicates if the saved order is printed.
-        /// </summary>
-        [JsonPropertyName("isSavePrint")]
-        public bool IsSavePrint { get; set; } = false;
+        ///// <summary>
+        ///// Indicates if the saved order is printed.
+        ///// </summary>
+        //[JsonPropertyName("isSavePrint")]
+        //public bool IsSavePrint { get; set; } = false;
 
-        /// <summary>
-        /// Indicates if it's a KOT (Kitchen Order Ticket) item.
-        /// </summary>
-        [JsonPropertyName("isKOT")]
-        public bool IsKOT { get; set; } = false;
+        ///// <summary>
+        ///// Indicates if it's a KOT (Kitchen Order Ticket) item.
+        ///// </summary>
+        //[JsonPropertyName("isKOT")]
+        //public bool IsKOT { get; set; } = false;
 
-        /// <summary>
-        /// Indicates if the KOT is printed.
-        /// </summary>
-        [JsonPropertyName("isKOTPrint")]
-        public bool IsKOTPrint { get; set; } = false;
+        ///// <summary>
+        ///// Indicates if the KOT is printed.
+        ///// </summary>
+        //[JsonPropertyName("isKOTPrint")]
+        //public bool IsKOTPrint { get; set; } = false;
 
-        /// <summary>
-        /// Indicates if the order is on hold.
-        /// </summary>
-        [JsonPropertyName("isHold")]
-        public bool IsHold { get; set; } = false;
+        ///// <summary>
+        ///// Indicates if the order is on hold.
+        ///// </summary>
+        //[JsonPropertyName("isHold")]
+        //public bool IsHold { get; set; } = false;
 
-        /// <summary>
-        /// Indicates if the order is saved for e-bill.
-        /// </summary>
-        [JsonPropertyName("isSaveEBill")]
-        public bool IsSaveEBill { get; set; } = false;
+        ///// <summary>
+        ///// Indicates if the order is saved for e-bill.
+        ///// </summary>
+        //[JsonPropertyName("isSaveEBill")]
+        //public bool IsSaveEBill { get; set; } = false;
 
-        /// <summary>
-        /// Indicates if the order is completed.
-        /// </summary>
-        [JsonPropertyName("isOrderCompleted")]
-        public bool IsOrderCompleted { get; set; } = false;
-        /// <summary>
-        /// Indicates if the food is Received.
-        /// </summary>
-        [JsonPropertyName("isFoodReceived")]
-        public bool IsFoodReceived { get; set; } = false;
+        ///// <summary>
+        ///// Indicates if the order is completed.
+        ///// </summary>
+        //[JsonPropertyName("isOrderCompleted")]
+        //public bool IsOrderCompleted { get; set; } = false;
+        ///// <summary>
+        ///// Indicates if the food is Received.
+        ///// </summary>
+        //[JsonPropertyName("isFoodReceived")]
+        //public bool IsFoodReceived { get; set; } = false;
 
         /// <summary>
         /// Indicates if the order item is active.
@@ -219,28 +288,6 @@ namespace RestaurantManagement.Domain.Entities
         [JsonPropertyName("isActive")]
         public bool IsActive { get; set; } = true;
 
-        /// <summary>
-        /// the user who created the order item.
-        /// </summary>
-        [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get; set; }
-
-        /// <summary>
-        /// date and time the order item was created.
-        /// </summary>
-        [JsonPropertyName("createdDate")]
-        public DateTime? CreatedDate { get; set; } = DateTime.Now;
-
-        /// <summary>
-        /// the user who last modified the order item.
-        /// </summary>
-        [JsonPropertyName("modifiedBy")]
-        public string? ModifiedBy { get; set; }
-
-        /// <summary>
-        /// date and time the order item was last modified.
-        /// </summary>
-        [JsonPropertyName("modifiedDate")]
-        public DateTime? ModifiedDate { get; set; }
+      
     }
 }

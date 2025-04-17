@@ -10,147 +10,138 @@ namespace RestaurantManagement.Application.Dtos
     public class BillingDto
     {
         /// <summary>
-        /// Unique identifier for the sale record.
+        /// Gets or sets the unique identifier for the bill.
         /// </summary>
         [JsonPropertyName("id")]
-        public int Id { get; set; } = 0; // Default to 0
+        public int Id { get; set; }
 
         /// <summary>
-        /// Date when the sale occurred.
+        /// Gets or sets the associated order ID.
         /// </summary>
-        [JsonPropertyName("dateOfSale")]
-        public DateTime DateOfSale { get; set; } = DateTime.Now; // Default to the current date and time
-
+        [JsonPropertyName("orderId")]
+        public int? OrderId { get; set; }
         /// <summary>
-        /// Day of the week when the sale occurred (e.g., Monday, Tuesday).
-        /// </summary>
-        [JsonPropertyName("dayOfSale")]
-        public string DayOfSale { get; set; } = string.Empty; // Default to an empty string
-
-        /// <summary>
-        /// Identifier for the type of order (e.g., dine-in, takeout).
-        /// </summary>
-        [JsonPropertyName("orderTypeId")]
-        public int OrderTypeId { get; set; } = 0; // Default to 0
-
-        /// <summary>
-        /// Identifier for the table associated with the order.
+        /// Gets or sets the associated table ID.
         /// </summary>
         [JsonPropertyName("tableId")]
-        public int? TableId { get; set; } = null; // Default to null
-
+        public int? TableId { get; set; }
         /// <summary>
-        /// Identifier for the customer placing the order.
-        /// </summary>
-        [JsonPropertyName("customerId")]
-        public int? CustomerId { get; set; } = null; // Default to null
-
-        /// <summary>
-        /// Identifier for the inventory item being sold.
-        /// </summary>
-        [JsonPropertyName("inventoryId")]
-        public int InventoryId { get; set; } = 0; // Default to 0
-
-        /// <summary>
-        /// Identifier for the discount applied to the order.
-        /// </summary>
-        [JsonPropertyName("discountId")]
-        public int? DiscountId { get; set; } = null; // Default to null
-
-        /// <summary>
-        /// Mode of payment used for the sale (e.g., cash, card).
-        /// </summary>
-        [JsonPropertyName("paymentMode")]
-        public string PaymentMode { get; set; } = "Cash"; // Default to "Cash"
-
-        /// <summary>
-        /// Username of the user who created the sale record.
-        /// </summary>
-        [JsonPropertyName("createdBy")]
-        public string CreatedBy { get; set; } = "System"; // Default to "System"
-
-        /// <summary>
-        /// Date and time when the sale record was created.
-        /// </summary>
-        [JsonPropertyName("createdDate")]
-        public DateTime CreatedDate { get; set; } = DateTime.Now; // Default to current date and time
-
-        /// <summary>
-        /// Username of the user who last modified the sale record.
-        /// </summary>
-        [JsonPropertyName("modifiedBy")]
-        public string ModifiedBy { get; set; } = "System"; // Default to "System"
-
-        /// <summary>
-        /// Date and time when the sale record was last modified.
-        /// </summary>
-        [JsonPropertyName("modifiedDate")]
-        public DateTime? ModifiedDate { get; set; } = null; // Default to null
-
-        /// <summary>
-        /// Name or description of the order type.
-        /// </summary>
-        [JsonPropertyName("orderType")]
-        public string OrderType { get; set; } = string.Empty; // Default to an empty string
-
-        /// <summary>
-        /// Cost of the order or item.
-        /// </summary>
-        [JsonPropertyName("cost")]
-        public decimal Cost { get; set; } = 0.0m; // Default to 0.0
-
-        /// <summary>
-        /// Name of the item being sold.
-        /// </summary>
-        [JsonPropertyName("itemName")]
-        public string ItemName { get; set; } = string.Empty; // Default to an empty string
-
-        /// <summary>
-        /// Code identifying the item in the inventory.
-        /// </summary>
-        [JsonPropertyName("itemCode")]
-        public string ItemCode { get; set; } = string.Empty; // Default to an empty string
-
-        /// <summary>
-        /// Code identifying the table associated with the sale.
-        /// </summary>
-        [JsonPropertyName("tableCode")]
-        public string TableCode { get; set; } = string.Empty; // Default to an empty string
-
-        /// <summary>
-        /// Name of the table associated with the sale.
-        /// </summary>
-        [JsonPropertyName("tableName")]
-        public string TableName { get; set; } = string.Empty; // Default to an empty string
-
-        /// <summary>
-        /// Name of the customer who placed the order.
+        /// Name of the customer.
         /// </summary>
         [JsonPropertyName("customerName")]
-        public string CustomerName { get; set; } = string.Empty; // Default to an empty string
-
-        /// <summary>
-        /// Contact phone number of the customer.
-        /// </summary>
-        [JsonPropertyName("phoneNo")]
-        public string PhoneNo { get; set; } = string.Empty; // Default to an empty string
+        public string CustomerName { get; set; } = string.Empty;
 
         /// <summary>
         /// Address of the customer.
         /// </summary>
-        [JsonPropertyName("address")]
-        public string Address { get; set; } = string.Empty; // Default to an empty string
+        [JsonPropertyName("customerAddress")]
+        public string CustomerAddress { get; set; } = string.Empty;
 
         /// <summary>
-        /// Discount percentage applied to the order.
+        /// Phone number of the customer.
         /// </summary>
-        [JsonPropertyName("percentage")]
-        public decimal? Percentage { get; set; } = null; // Default to null
+        [JsonPropertyName("customerPhoneNo")]
+        public string CustomerPhoneNo { get; set; } = string.Empty;
+        /// <summary>
+        /// Gets or sets the locality of the customer.
+        /// </summary>
+        [JsonPropertyName("customerLocality")]
+        public string? CustomerLocality { get; set; } = null;
 
         /// <summary>
-        /// Type of discount applied (e.g., percentage-based, flat amount).
+        /// Gets or sets additional information about the customer.
         /// </summary>
-        [JsonPropertyName("discountType")]
-        public string DiscountType { get; set; } = string.Empty;
+        [JsonPropertyName("customerInfo")]
+        public string? CustomerInfo { get; set; } = null;
+
+        /// <summary>
+        /// Gets or sets the discount ID applied to the bill.
+        /// </summary>
+        [JsonPropertyName("discountId")]
+        public int? DiscountId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the mode of payment used.
+        /// </summary>
+        [JsonPropertyName("paymentMode")]
+        public string PaymentMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether parcel is required.
+        /// </summary>
+        [JsonPropertyName("isParcelRequired")]
+        public bool? IsParcelRequired { get; set; }
+
+        /// <summary>
+        /// Gets or sets the amount charged for parcel.
+        /// </summary>
+        [JsonPropertyName("parcelAmount")]
+        public decimal? ParcelAmount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the service charge amount.
+        /// </summary>
+        [JsonPropertyName("serviceCharge")]
+        public decimal? ServiceCharge { get; set; }
+
+        /// <summary>
+        /// Gets or sets the discount amount.
+        /// </summary>
+        [JsonPropertyName("discountAmount")]
+        public decimal? DiscountAmount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the net amount after discounts and charges.
+        /// </summary>
+        [JsonPropertyName("netAmount")]
+        public decimal? NetAmount { get; set; }
+
+        /// <summary>
+        /// Gets or sets the CGST (Central GST) amount.
+        /// </summary>
+        [JsonPropertyName("cgst")]
+        public decimal? Cgst { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SGST (State GST) amount.
+        /// </summary>
+        [JsonPropertyName("sgst")]
+        public decimal? Sgst { get; set; }
+
+        /// <summary>
+        /// Gets or sets the total amount including all charges.
+        /// </summary>
+        [JsonPropertyName("grandTotal")]
+        public decimal? GrandTotal { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the payment is completed.
+        /// </summary>
+        [JsonPropertyName("isPaymentDone")]
+        public bool? IsPaymentDone { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the user who created the record.
+        /// </summary>
+        [JsonPropertyName("createdBy")]
+        public string CreatedBy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the creation date and time.
+        /// </summary>
+        [JsonPropertyName("createdDate")]
+        public DateTime? CreatedDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the user who last modified the record.
+        /// </summary>
+        [JsonPropertyName("modifiedBy")]
+        public string ModifiedBy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last modification date and time.
+        /// </summary>
+        [JsonPropertyName("modifiedDate")]
+        public DateTime? ModifiedDate { get; set; }
     }
 }
