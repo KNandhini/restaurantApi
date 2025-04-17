@@ -123,72 +123,72 @@ namespace RestaurantManagement.Domain.Entities
         /// Gets or sets the bill ID applied to the bill.
         /// </summary>
         [JsonPropertyName("billId")]
-        public int? BillId { get; set; }
+        public int? BillId { get; set; } = 0;
         /// <summary>
         /// Gets or sets the discount ID applied to the bill.
         /// </summary>
         [JsonPropertyName("discountId")]
-        public int? DiscountId { get; set; }
+        public int? DiscountId { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the mode of payment used.
         /// </summary>
         [JsonPropertyName("paymentMode")]
-        public string PaymentMode { get; set; }
+        public string PaymentMode { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets a value indicating whether parcel is required.
         /// </summary>
         [JsonPropertyName("isParcelRequired")]
-        public bool? IsParcelRequired { get; set; }
+        public bool? IsParcelRequired { get; set; } = false;
 
         /// <summary>
         /// Gets or sets the amount charged for parcel.
         /// </summary>
         [JsonPropertyName("parcelAmount")]
-        public decimal? ParcelAmount { get; set; }
+        public decimal? ParcelAmount { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the service charge amount.
         /// </summary>
         [JsonPropertyName("serviceCharge")]
-        public decimal? ServiceCharge { get; set; }
+        public decimal? ServiceCharge { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the discount amount.
         /// </summary>
         [JsonPropertyName("discountAmount")]
-        public decimal? DiscountAmount { get; set; }
+        public decimal? DiscountAmount { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the net amount after discounts and charges.
         /// </summary>
         [JsonPropertyName("netAmount")]
-        public decimal? NetAmount { get; set; }
+        public decimal? NetAmount { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the CGST (Central GST) amount.
         /// </summary>
         [JsonPropertyName("cgst")]
-        public decimal? Cgst { get; set; }
+        public decimal? Cgst { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the SGST (State GST) amount.
         /// </summary>
         [JsonPropertyName("sgst")]
-        public decimal? Sgst { get; set; }
+        public decimal? Sgst { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the total amount including all charges.
         /// </summary>
         [JsonPropertyName("grandTotal")]
-        public decimal? GrandTotal { get; set; }
+        public decimal? GrandTotal { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets a value indicating whether the payment is completed.
         /// </summary>
         [JsonPropertyName("isPaymentDone")]
-        public bool? IsPaymentDone { get; set; }
+        public bool? IsPaymentDone { get; set; } = false;
 
 
     }
