@@ -30,6 +30,7 @@ namespace RestaurantManagement.Infrastructure.Constants
         public const string SP_INSERTORDERDETAIL = "sp_InsertOrderDetails";
         public const string SP_UPDATEORDERDETAIL = "sp_UpdateOrderDetails";
         public const string SP_DELETEORDERDETAIL = "[sp_DeleteOrderDetails]";
+        
 
         public const string SP_GETAllINVENTORYCOSTDETAIL = "sp_GetInventoryCost";
         public const string SP_INSERTINVENTORYCOSTDETAIL = "[sp_InsertInventoryCost";
@@ -75,8 +76,8 @@ namespace RestaurantManagement.Infrastructure.Constants
         public const string SP_UPDATETABLEMASTERDETAIL = "sp_UpdateTABLEMASTERMaster";
         public const string SP_DELETETABLEMASTERDETAIL = "sp_DeleteTABLEMASTERMaster";
 
-        public const string SP_GETALLTABLEDETAILS = "sp_GetOrderTypeMaster";
-        public const string SP_INSERTTABLEDETAILS = "[sp_InsertTABLEMASTERMaster]";
+        public const string SP_GETALLTABLEDETAILS = "sp_GetTableDetails";
+        public const string SP_INSERTTABLEDETAILS = "[sp_InsertTableDetails]";
         public const string SP_UPDATETABLEDETAILS = "sp_UpdateTABLEMASTERMaster";
         public const string SP_DELETETABLEDETAILS = "sp_DeleteTABLEMASTERMaster";
 
@@ -86,6 +87,12 @@ namespace RestaurantManagement.Infrastructure.Constants
         public const string SP_UPDATEORDERTYPEMASTER = "sp_UpdateOrderTypeMaster";
         public const string SP_DELETEORDERTYPEMASTER = "sp_DeleteOrderTypeMaster";
 
+        public const string SP_GETORDERITEMTRANSACTION = "sp_GetOrderItemTransaction";
+
+        public const string SP_INSERTORDERITEMTRANSACTION = "sp_InsertOrderItemTransaction";
+
+        public const string SP_UPDATEACTIVEORDERITEMTRANSACTION = "sp_UpdateActiveOrderItemTransaction";
+        public const string SP_GETALLTABLEMAPPEDDETAILS = "sp_GetTableStatusMapping";
     }
 
 

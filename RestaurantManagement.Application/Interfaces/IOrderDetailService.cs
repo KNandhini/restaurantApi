@@ -18,7 +18,7 @@ namespace RestaurantManagement.Application.Interfaces
      /// <returns>
      /// The task result contains a collection of OrderDetailDto DTOs. if successful, or null if no OrderDetails match the provided identifier.
      /// </returns>
-        Task<IEnumerable<OrderDetailDto>> GetOrderDetailDetails(int? id);
+        Task<OrderDetailDto> GetOrderDetailsDetails(int? id);
         /// <summary>
         /// Inserts a new OrderDetailDto.
         /// </summary>
@@ -26,7 +26,7 @@ namespace RestaurantManagement.Application.Interfaces
         /// <returns>
         /// The task result indicates whether the insertion was successful.
         /// </returns>
-        Task<OrderDetailDto> InsertOrderDetailDetails(OrderDetailDto orderDetailDto);
+        Task<OrderDetailDto> InsertOrderDetails(OrderDetailDto orderDetailDto);
 
         /// <summary>
         /// Updates an existing OrderDetailDto.

@@ -30,25 +30,35 @@ namespace RestaurantManagement.Application.Services
             _mapper = mapper;
         }
         /// <inheritdoc/>
-        public async Task<IEnumerable<OrderDetailDto>> GetOrderDetailsDetails(int? id)
+        public async Task<OrderDetailDto> GetOrderDetailsDetails(int? id)
         {
             var OrderDetails = await _orderDetailRepository.GetOrderDetailsDetails(id);
 
-            var OrderDetailDetails = _mapper.Map<IEnumerable<OrderDetailDto>>(OrderDetails);
+            var OrderDetailDetails = _mapper.Map<OrderDetailDto>(OrderDetails);
             return OrderDetailDetails;
         }
         /// <inheritdoc/>
-        public async Task<OrderDetailDto> InsertOrderDetailDetails(OrderDetailDto orderDetailDto)
+        public async Task<OrderDetailDto> InsertOrderDetails(OrderDetailDto orderDetailDto)
         {
-
-            var OrderDetail = _mapper.Map<OrderDetail>(orderDetailDto);
-            var insertedData = await _orderDetailRepository.InsertOrderDetailDetails(OrderDetail);
-            if (insertedData == null)
+            try
             {
-                // Handle the case where the insertion was not successful
-                throw new Exception("OrderDetail insertion failed.");
+                var OrderData = _mapper.Map<OrderDetail>(orderDetailDto);
+                var insertedData = await _orderDetailRepository.InsertOrderDetails(OrderData);
+                if (insertedData == null)
+                {
+                    // Handle the case where the insertion was not successful
+                    throw new Exception("OrderDetail insertion failed.");
+                }
+                return _mapper.Map<OrderDetailDto>(insertedData);
             }
-            return _mapper.Map<OrderDetailDto>(insertedData);
+            catch (Exception ex)
+            {
+                // Log or inspect the exception
+                Console.WriteLine($"AutoMapper error: {ex.Message}");
+                throw;
+            }
+
+           
 
         }
         /// <inheritdoc/>
@@ -63,9 +73,6 @@ namespace RestaurantManagement.Application.Services
             return await _orderDetailRepository.DeleteOrderDetailDetails(id);
         }
 
-        public Task<IEnumerable<OrderDetailDto>> GetOrderDetailDetails(int? id)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

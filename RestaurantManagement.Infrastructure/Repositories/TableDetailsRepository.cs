@@ -28,14 +28,23 @@ namespace RestaurantManagement.Infrastructure.Repositories
         }
 
         /// <inheritdoc/>
-        public async Task<IEnumerable<TableDetails>> GetTableDetailsDetails(int? id)
+        public async Task<IEnumerable<TableDetails>> GetTableDetails(int? id)
         {
             var spName = SPNames.SP_GETALLTABLEDETAILS; // Update the stored procedure name if necessary
             return await Task.Factory.StartNew(() => _db.Connection.Query<TableDetails>(spName,
                 new { Id = id }, commandType: CommandType.StoredProcedure).ToList());
         }
 
-        public async Task<TableDetails> InsertTableDetailsDetails(TableDetails TableDetails)
+        public async Task<IEnumerable<TableMappingDetails>> GetMappingTableDetails(int? id)
+        {
+            var spName = SPNames.SP_GETALLTABLEMAPPEDDETAILS; // Update the stored procedure name if necessary
+            return await Task.Factory.StartNew(() => _db.Connection.Query<TableMappingDetails>(spName,
+                new { Id = id }, commandType: CommandType.StoredProcedure).ToList());
+        }
+
+
+
+        public async Task<TableDetails> InsertTableDetails(TableDetails TableDetails)
         {
             var spName = SPNames.SP_INSERTTABLEDETAILS; // Name of your stored procedure
                                                              // Define parameters for the stored procedure
@@ -62,7 +71,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
         }
         /// <inheritdoc/>
-        public async Task UpdateTableDetailsDetails(TableDetails TableDetails)
+        public async Task UpdateTableDetails(TableDetails TableDetails)
         {
             var spName = SPNames.SP_UPDATETABLEDETAILS; // Update the stored procedure name if necessary
 
@@ -79,7 +88,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 _db.Connection.Execute(spName, parameters, commandType: CommandType.StoredProcedure));
         }
 
-        public async Task<bool> DeleteTableDetailsDetails(int id)
+        public async Task<bool> DeleteTableDetails(int id)
         {
             var spName = SPNames.SP_DELETETABLEDETAILS; // Update the stored procedure name if necessary
             await Task.Factory.StartNew(() =>

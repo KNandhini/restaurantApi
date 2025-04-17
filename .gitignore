@@ -2,6 +2,7 @@
 *.user
 *.suo
 *.vsidx
+<<<<<<< HEAD
 /RestaurantManagement.Api/obj/project.assets.json
 /RestaurantManagement.Api/obj/project.nuget.cache
 /RestaurantManagement.Api/obj/RestaurantManagement.Api.csproj.nuget.dgspec.json
@@ -77,17 +78,20 @@
 /RestaurantManagement.Api/bin/Debug/net8.0/RestaurantManagement.Domain.pdb
 /RestaurantManagement.Api/bin/Debug/net8.0/RestaurantManagement.Infrastructure.dll
 /RestaurantManagement.Api/bin/Debug/net8.0/RestaurantManagement.Infrastructure.pdb
-/RestaurantManagement.Api/obj/Debug/net8.0/ref/RestaurantManagement.Api.dll
-/RestaurantManagement.Domain/bin/Debug/net8.0/RestaurantManagement.Domain.deps.json
-/RestaurantManagement.Domain/bin/Debug/net8.0/RestaurantManagement.Domain.dll
 /RestaurantManagement.Domain/bin/Debug/net8.0/RestaurantManagement.Domain.pdb
-/RestaurantManagement.Application/bin/Debug/net8.0/RestaurantManagement.Application.deps.json
-/RestaurantManagement.Api/obj/Debug/net8.0/ApiEndpoints.json
 /RestaurantManagement.Domain/obj/Debug/net8.0/RestaurantManagement.Domain.csproj.CoreCompileInputs.cache
+/RestaurantManagement.Domain/bin/Debug/net8.0/RestaurantManagement.Domain.dll
+/RestaurantManagement.Api/obj/Debug/net8.0/ApiEndpoints.json
 /RestaurantManagement.Infrastructure/bin/Debug/net8.0/RestaurantManagement.Domain.dll
 /RestaurantManagement.Infrastructure/bin/Debug/net8.0/RestaurantManagement.Domain.pdb
-/RestaurantManagement.Infrastructure/bin/Debug/net8.0/RestaurantManagement.Infrastructure.deps.json
 /RestaurantManagement.Infrastructure/bin/Debug/net8.0/RestaurantManagement.Infrastructure.dll
 /RestaurantManagement.Infrastructure/bin/Debug/net8.0/RestaurantManagement.Infrastructure.pdb
-/RestaurantManagement.Application/obj/Debug/net8.0/Restaura.CE602A58.Up2Date
-/RestaurantManagement.Infrastructure/obj/Debug/net8.0/Restaura.1B2BE49D.Up2Date
+/RestaurantManagement.Application
+/RestaurantManagement.Domain/bin/Debug/net8.0
+/RestaurantManagement.Infrastructure
+=======
+>>>>>>> feaa33316f5cc20f458a11cfd26b4b2cdc1ea358
+/RestaurantManagement.Domain/obj/Debug/net8.0/RestaurantManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/RestaurantManagement.Application/obj/Debug/net8.0/ref/RestaurantManagement.Application.dll
+/RestaurantManagement.Domain/obj/Debug/net8.0/ref/RestaurantManagement.Domain.dll
+/RestaurantManagement.Infrastructure/obj/Debug/net8.0/ref/RestaurantManagement.Infrastructure.dll

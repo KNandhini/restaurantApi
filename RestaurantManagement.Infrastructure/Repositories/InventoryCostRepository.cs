@@ -33,7 +33,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
         public async Task<InventoryCost> InsertInventoryCostDetails(InventoryCost inventoryCosts)
         {
-            var spName = SPNames.SP_INSERTCUSTOMERDETAIL; // Name of your stored procedure
+            var spName = SPNames.SP_INSERTINVENTORYCOSTDETAIL; // Name of your stored procedure
                                                                  // Define parameters for the stored procedure
             
             
