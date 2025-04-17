@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Data.SqlClient;
 using RestaurantManagement.Application.Interfaces;
+using RestaurantManagement.Domain.Entities;
 
 namespace RestaurantManagement.Api.Controllers
 {
@@ -154,10 +155,10 @@ namespace RestaurantManagement.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.ServiceUnavailable)]
-        public async Task<IActionResult> UpdateOrderDetail([FromBody] OrderDetailDto orderDetailDto)
+        public async Task<IActionResult> UpdateFoodReceivedByItem([FromBody] UpdateFoodReceivedRequestDto orderDetailDto)
         {
-            _logger.LogInformation("{MethodName} method is called", nameof(UpdateOrderDetail));
-            var OrderDetails = await _orderDetailService.GetOrderDetailsDetails((int?)orderDetailDto.Id);
+            _logger.LogInformation("{MethodName} method is called", nameof(UpdateFoodReceivedByItem));
+            var OrderDetails = await _orderDetailService.GetOrderDetailsDetails((int?)orderDetailDto.OrderId);
             if (OrderDetails == null)
             {
                 return NotFound();
@@ -239,6 +240,6 @@ namespace RestaurantManagement.Api.Controllers
                 });
             }
         }
-
+        
     }
 }

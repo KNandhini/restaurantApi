@@ -35,7 +35,7 @@ namespace RestaurantManagement.Application.Interfaces
         /// <returns>
         ///The task result indicates whether the update was successful.
         /// </returns>
-        Task UpdateOrderDetailDetails(OrderDetailDto orderDetailDto);
+        Task UpdateOrderDetailDetails(UpdateFoodReceivedRequestDto orderDetailDto);
         /// <summary>
         /// Deletes a OrderDetailDto by its unique identifier.
         /// </summary>
@@ -44,5 +44,6 @@ namespace RestaurantManagement.Application.Interfaces
         /// The task result indicates whether the deletion was successful.
         /// </returns>
         Task<bool> DeleteOrderDetailDetails(int id);
+       
     }
 }
