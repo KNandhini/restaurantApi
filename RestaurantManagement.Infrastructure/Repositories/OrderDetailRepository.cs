@@ -78,7 +78,8 @@ namespace RestaurantManagement.Infrastructure.Repositories
                                 CustomerName = reader["CustomerName"]?.ToString(),
                                 CustomerAddress = reader["CustomerAddress"]?.ToString(),
                                 CustomerPhoneNo = reader["CustomerPhoneNo"]?.ToString(),
-
+                                CustomerLocality = reader["CustomerLocality"]?.ToString(),
+                                CustomerInfo = reader["CustomerInfo"]?.ToString(),
                                 OrderType = reader["OrderType"]?.ToString(),
                                 OrderSubType = reader["OrderSubType"]?.ToString(),
                                 WaiterName = reader["WaiterName"]?.ToString(),
