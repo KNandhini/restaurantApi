@@ -2,6 +2,7 @@
 *.user
 *.suo
 *.vsidx
+<<<<<<< HEAD
 /RestaurantManagement.Api/obj/project.assets.json
 /RestaurantManagement.Api/obj/project.nuget.cache
 /RestaurantManagement.Api/obj/RestaurantManagement.Api.csproj.nuget.dgspec.json
@@ -88,3 +89,9 @@
 /RestaurantManagement.Application
 /RestaurantManagement.Domain/bin/Debug/net8.0
 /RestaurantManagement.Infrastructure
+=======
+>>>>>>> feaa33316f5cc20f458a11cfd26b4b2cdc1ea358
+/RestaurantManagement.Domain/obj/Debug/net8.0/RestaurantManagement.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/RestaurantManagement.Application/obj/Debug/net8.0/ref/RestaurantManagement.Application.dll
+/RestaurantManagement.Domain/obj/Debug/net8.0/ref/RestaurantManagement.Domain.dll
+/RestaurantManagement.Infrastructure/obj/Debug/net8.0/ref/RestaurantManagement.Infrastructure.dll

@@ -19,7 +19,18 @@ namespace RestaurantManagement.Infrastructure.Interfaces
         /// <returns>
         /// The task result contains a collection of TableDetails if successful, or null if no TableDetails match the provided identifier.
         /// </returns>
-        Task<IEnumerable<TableDetails>> GetTableDetailsDetails(int? id);
+        Task<IEnumerable<TableDetails>> GetTableDetails(int? id);
+
+
+
+        /// <summary>
+        /// Retrieves MappingDetails optionally filtered by their unique identifier.
+        /// </summary>
+        /// <param name="id">Optional. The unique identifier of the MappingDetails to retrieve. If not provided, retrieves all MappingDetails.</param>
+        /// <returns>
+        /// The task result contains a collection of MappingDetails if successful, or null if no MappingDetails match the provided identifier.
+        /// </returns>
+        Task<IEnumerable<TableMappingDetails>> GetMappingTableDetails(int? id);
         /// <summary>
         /// Inserts a new TableDetails.
         /// </summary>
@@ -27,7 +38,7 @@ namespace RestaurantManagement.Infrastructure.Interfaces
         /// <returns>
         /// Not returns anything.
         /// </returns>
-        Task<TableDetails> InsertTableDetailsDetails(TableDetails TableDetails);
+        Task<TableDetails> InsertTableDetails(TableDetails TableDetails);
         /// <summary>
         /// Updates an existing TableDetails.
         /// </summary>
@@ -35,7 +46,7 @@ namespace RestaurantManagement.Infrastructure.Interfaces
         /// <returns>
         /// Not returns anything.
         /// </returns>
-        Task UpdateTableDetailsDetails(TableDetails TableDetails);
+        Task UpdateTableDetails(TableDetails TableDetails);
         /// <summary>
         /// Deletes a TableDetails by its unique identifier.
         /// </summary>
@@ -43,6 +54,6 @@ namespace RestaurantManagement.Infrastructure.Interfaces
         /// <returns>
         /// The task result indicates whether the deletion was successful.
         /// </returns>
-        Task<bool> DeleteTableDetailsDetails(int id);
+        Task<bool> DeleteTableDetails(int id);
     }
 }
