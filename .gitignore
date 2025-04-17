@@ -201,6 +201,4 @@
 /RestaurantManagement.Application/obj/Debug/net8.0/ref/RestaurantManagement.Application.dll
 /RestaurantManagement.Domain/obj/Debug/net8.0/ref/RestaurantManagement.Domain.dll
 /RestaurantManagement.Infrastructure/obj/Debug/net8.0/ref/RestaurantManagement.Infrastructure.dll
-/RestaurantManagement.Api/bin/Debug/net8.0/RestaurantManagement.Api.deps.json
 /RestaurantManagement.Api/obj/Debug/net8.0/RestaurantManagement.Api.MvcApplicationPartsAssemblyInfo.cs
-/RestaurantManagement.Api/obj/RestaurantManagement.Api.csproj.nuget.g.props

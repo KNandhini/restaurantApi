@@ -175,17 +175,17 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
         }
         /// <inheritdoc/>
-        public async Task UpdateOrderDetailDetails(OrderDetail orderDetails)
+        public async Task UpdateOrderDetailDetails(UpdateFoodReceivedRequest orderDetails)
         {
-            var spName = SPNames.SP_UPDATEORDERDETAIL; // Update the stored procedure name if necessary
+            var spName = SPNames.SP_UPDATEISFOODRECEIVEDBYITEM; // Update the stored procedure name if necessary
             
 
             var parameters = new
             {
-                CustomerId = orderDetails.CustomerId,
-                TableId = orderDetails.TableId,
-                OrderType = orderDetails.OrderType,
-                WaiterId = orderDetails.WaiterId,
+                OrderId = orderDetails.OrderId,
+                ItemId = orderDetails.ItemId,
+                IsFoodReceived = orderDetails.IsFoodReceived,
+                IsCheckOut = orderDetails.IsCheckOut,
                 ModifiedBy = orderDetails.ModifiedBy,
 
             };

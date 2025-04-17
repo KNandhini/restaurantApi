@@ -74,28 +74,13 @@ namespace RestaurantManagement.Infrastructure.Repositories
         /// <inheritdoc/>
         public async Task UpdateBillDetails(Billings bill)
         {
-            var spName = SPNames.SP_UPDATEBILLINGDETAIL; // Update the stored procedure name if necessary
+            var spName = SPNames.SP_UPDATEBILLPAIDSTATUS; // Update the stored procedure name if necessary
             
 
             var parameters = new
             {
-                Id = bill.Id,
                 OrderId = bill.OrderId,
-                TableId = bill.TableId,
-                DiscountId = bill.DiscountId,
-                CustomerName = bill.CustomerName,
-                CustomerAddress = bill.CustomerAddress,
-                CustomerPhoneNo = bill.CustomerPhoneNo,
-                CustomerLocality = bill.CustomerLocality,
-                CustomerInfo = bill.CustomerInfo,
-                IsParcelRequired = bill.IsParcelRequired,
-                ParcelAmount = bill.ParcelAmount,
-                ServiceCharge = bill.ServiceCharge,
-                DiscountAmount = bill.DiscountAmount,
-                NetAmount = bill.NetAmount,
-                Sgst = bill.Sgst,
-                Cgst = bill.Cgst,
-                GrandTotal = bill.GrandTotal,
+               PaymentMode=bill.PaymentMode,
                 ModifiedBy = bill.ModifiedBy,
 
             };
