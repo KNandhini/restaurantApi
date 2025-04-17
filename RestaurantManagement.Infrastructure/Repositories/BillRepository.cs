@@ -39,16 +39,24 @@ namespace RestaurantManagement.Infrastructure.Repositories
             
 
             var parameters = new
-            {   
-                DateOfSale= bill.DateOfSale,
-                DayOfSale= bill.DayOfSale,
-                OrderTypeId= bill.OrderTypeId,
-                TableId= bill.TableId,
-                CustomerId=bill.CustomerId,
-                InventoryId=bill.InventoryId,
-                DiscountId=bill.DiscountId,
-                PaymentMode=bill.PaymentMode,
-                CreatedBy = bill.CreatedBy,
+            {
+                OrderId = bill.OrderId,
+                TableId = bill.TableId,
+                DiscountId = bill.DiscountId,
+                CustomerName = bill.CustomerName,
+                CustomerAddress = bill.CustomerAddress,
+                CustomerPhoneNo = bill.CustomerPhoneNo,
+                CustomerLocality = bill.CustomerLocality,
+                CustomerInfo = bill.CustomerInfo,
+                IsParcelRequired = bill.IsParcelRequired,
+                ParcelAmount=bill.ParcelAmount,
+                ServiceCharge=bill.ServiceCharge,
+                DiscountAmount=bill.DiscountAmount,
+                NetAmount=bill.NetAmount,
+                Sgst=bill.Sgst,
+                Cgst = bill.Cgst,
+                GrandTotal=bill.GrandTotal,
+                CreatedBy=bill.CreatedBy
 
             };
 
@@ -72,14 +80,22 @@ namespace RestaurantManagement.Infrastructure.Repositories
             var parameters = new
             {
                 Id = bill.Id,
-                DateOfSale = bill.DateOfSale,
-                DayOfSale = bill.DayOfSale,
-                OrderTypeId = bill.OrderTypeId,
+                OrderId = bill.OrderId,
                 TableId = bill.TableId,
-                CustomerId = bill.CustomerId,
-                InventoryId = bill.InventoryId,
                 DiscountId = bill.DiscountId,
-                PaymentMode = bill.PaymentMode,
+                CustomerName = bill.CustomerName,
+                CustomerAddress = bill.CustomerAddress,
+                CustomerPhoneNo = bill.CustomerPhoneNo,
+                CustomerLocality = bill.CustomerLocality,
+                CustomerInfo = bill.CustomerInfo,
+                IsParcelRequired = bill.IsParcelRequired,
+                ParcelAmount = bill.ParcelAmount,
+                ServiceCharge = bill.ServiceCharge,
+                DiscountAmount = bill.DiscountAmount,
+                NetAmount = bill.NetAmount,
+                Sgst = bill.Sgst,
+                Cgst = bill.Cgst,
+                GrandTotal = bill.GrandTotal,
                 ModifiedBy = bill.ModifiedBy,
 
             };

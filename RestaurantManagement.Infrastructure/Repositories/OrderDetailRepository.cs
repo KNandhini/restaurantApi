@@ -95,19 +95,10 @@ namespace RestaurantManagement.Infrastructure.Repositories
                             ItemName = reader["itemName"]?.ToString(),
                             Qty = Convert.ToInt32(reader["qty"]),
                             Price = Convert.ToDecimal(reader["price"]),
-                            IsSave = Convert.ToBoolean(reader["isSave"]),
-                            IsSavePrint = Convert.ToBoolean(reader["isSavePrint"]),
-                            IsKOT = Convert.ToBoolean(reader["isKOT"]),
-                            IsKOTPrint = Convert.ToBoolean(reader["isKOTPrint"]),
-                            IsHold = Convert.ToBoolean(reader["isHold"]),
-                            IsSaveEBill = Convert.ToBoolean(reader["isSaveEBill"]),
-                            IsOrderCompleted = Convert.ToBoolean(reader["isOrderCompleted"]),
-                            IsFoodReceived = Convert.ToBoolean(reader["isFoodReceived"]),
+                            Status = (reader["status"])?.ToString(),
+                           
                             IsActive = Convert.ToBoolean(reader["isActive"]),
-                            CreatedBy = reader["createdBy"]?.ToString(),
-                            CreatedDate = Convert.ToDateTime(reader["createdDate"]),
-                            ModifiedBy = reader["modifiedBy"]?.ToString(),
-                            ModifiedDate = reader["modifiedDate"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["modifiedDate"])
+                           
                         };
 
                         order.ItemDetails.Add(item);
