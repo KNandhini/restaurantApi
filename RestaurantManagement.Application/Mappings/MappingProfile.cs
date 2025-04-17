@@ -19,11 +19,15 @@ namespace RestaurantManagement.Application.Mappings
             CreateMap<Billings, BillingDto>().ReverseMap();
             CreateMap<Customers, CustomerDto>().ReverseMap();
             CreateMap<Inventorys, InventoryDto > ().ReverseMap();
+            CreateMap<OrderDetail, OrderDetailDto>().ReverseMap();
+            CreateMap<OrderItem, OrderItemDto>().ReverseMap();
             CreateMap<InventoryCost, InventoryCostDto>().ReverseMap();
             CreateMap<Users, UserDto>().ReverseMap();
+            CreateMap<Roles, RoleDto>().ReverseMap();
+            CreateMap<Discounts, DiscountDto>().ReverseMap();
             CreateMap<TableMaster, TableMasterDto>().ReverseMap();
             CreateMap<TableDetails, TableDetailsDto>().ReverseMap();
-            CreateMap<TableMappingDetails, TableMappingDetailsDto>().ReverseMap();
+            CreateMap<OrderTypes, OrderTypeDto>().ReverseMap();
         }
     }
 }

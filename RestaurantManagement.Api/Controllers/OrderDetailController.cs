@@ -7,44 +7,44 @@ using RestaurantManagement.Application.Interfaces;
 namespace RestaurantManagement.Api.Controllers
 {
     /// <summary>
-    /// Controller for handling CRUD operations on customerDto.
+    /// Controller for handling CRUD operations on orderDetailDto.
     /// </summary>
-    [Route("api/customerDto")]
+    [Route("api/orderDetail")]
     [ApiController]
-    public class CustomerController : RestaurantManagementControllerBase
+    public class OrderDetailController : RestaurantManagementControllerBase
     {
 
 
-        private readonly ICustomerService _customerService;
+        private readonly IOrderDetailService _orderDetailService;
         /// <summary>
-        /// Initializes a new instance of the <see cref="customerController"/> class.
+        /// Initializes a new instance of the <see cref="orderDetailController"/> class.
         /// </summary>
         /// <param name="logger">The logger instance used for logging.</param>
-        /// <param name="customerService">The customerDto service instance used for CRUD operations on customerDto.</param>
-        public CustomerController(ILogger<CustomerController> logger, ICustomerService customerService) : base(logger)
+        /// <param name="orderDetailService">The orderDetailDto service instance used for CRUD operations on orderDetailDto.</param>
+        public OrderDetailController(ILogger<OrderDetailController> logger, IOrderDetailService orderDetailService) : base(logger)
         {
-            _customerService = customerService;
+            _orderDetailService = orderDetailService;
         }
 
         /// <summary>
-        /// Retrieves all customerDto.
+        /// Retrieves all orderDetailDto.
         /// </summary>
         /// <returns>
-        /// The response with a collection of customerDto DTOs if successful, or a problem 
+        /// The response with a collection of orderDetailDto DTOs if successful, or a problem 
         /// details object indicating the error if the operation fails.
         /// </returns>
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<CustomerDto>))]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<OrderDetailDto>))]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.ServiceUnavailable)]
-        public async Task<IActionResult> GetAllCustomers()
+        public async Task<IActionResult> GetAllOrderDetails()
         {
-            _logger.LogInformation("{MethodName} method is called", nameof(GetAllCustomers));
+            _logger.LogInformation("{MethodName} method is called", nameof(GetAllOrderDetails));
             try
             {
-                var result = await _customerService.GetCustomersDetails(null);
+                var result = await _orderDetailService.GetOrderDetailsDetails(null);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -55,43 +55,50 @@ namespace RestaurantManagement.Api.Controllers
 
 
         /// <summary>
-        /// Retrieves a customerDto by its unique identifier.
+        /// Retrieves a orderDetailDto by its unique identifier.
         /// </summary>
-        /// <param name="id">The unique identifier of the customerDto.</param>
+        /// <param name="id">The unique identifier of the orderDetailDto.</param>
         /// <returns>
-        /// The response with the customerDto DTO if successful, or a problem details 
+        /// The response with the orderDetailDto DTO if successful, or a problem details 
         /// object indicating the error if the operation fails.
         /// </returns>
         [HttpGet("{id}")]
-        [ProducesResponseType(200, Type = typeof(CustomerDto))]
+        [ProducesResponseType(200, Type = typeof(OrderDetailDto))]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.ServiceUnavailable)]
 
-        public async Task<IActionResult> GetCustomerById(int id)
+        public async Task<IActionResult> GetOrderDetailById(int id)
         {
-            _logger.LogInformation("{MethodName} method is called for the id: {id}", nameof(GetCustomerById), id);
+            _logger.LogInformation("{MethodName} method is called for the id: {id}", nameof(GetOrderDetailById), id);
             if (id < 1)
             {
                 return StatusCode(StatusCodes.Status400BadRequest);
             }
             try
             {
-                var customerDto = await _customerService.GetCustomersDetails(id);
-                return customerDto.Count() == 1 ? Ok(customerDto) : StatusCode(StatusCodes.Status404NotFound);
+                var orderDetailDto = await _orderDetailService.GetOrderDetailsDetails(id);
+
+                if (orderDetailDto == null)
+                    return StatusCode(StatusCodes.Status404NotFound, "Order details not found.");
+
+                return orderDetailDto.Id != 0
+                    ? Ok(orderDetailDto)
+                    : StatusCode(StatusCodes.Status404NotFound, "Order ID not valid.");
             }
             catch (Exception ex)
             {
-                return InternalServerError(ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
+
         }
         /// <summary>
-        /// Inserts a new customerDto.
+        /// Inserts a new orderDetailDto.
         /// </summary>
-        /// <param name="customerDto">The DTO representing the customerDto to insert.</param>
+        /// <param name="orderDetailDto">The DTO representing the orderDetailDto to insert.</param>
         /// <returns>
-        /// The response with the created customerDto DTO if successful, or a problem details 
+        /// The response with the created orderDetailDto DTO if successful, or a problem details 
         /// object indicating the error if the operation fails.
         /// </returns>
         [HttpPost]
@@ -100,16 +107,16 @@ namespace RestaurantManagement.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.ServiceUnavailable)]
-        public async Task<IActionResult> InsertCustomer([FromBody] CustomerDto customerDto)
+        public async Task<IActionResult> InsertOrderDetail([FromBody] OrderDetailDto orderDetailDto)
         {
-            _logger.LogInformation("{MethodName} method is called", nameof(InsertCustomer));
+            _logger.LogInformation("{MethodName} method is called", nameof(InsertOrderDetail));
             try
             {
-                // Insert the customerDto and retrieve the data
-                var CustomerDetail = await _customerService.InsertCustomerDetails(customerDto);
+                // Insert the orderDetailDto and retrieve the data
+                var OrderDetail = await _orderDetailService.InsertOrderDetails(orderDetailDto);
 
 
-                return CreatedAtAction(nameof(GetAllCustomers), new { id = customerDto.Id }, CustomerDetail);
+                return CreatedAtAction(nameof(GetAllOrderDetails), new { id = orderDetailDto.Id }, OrderDetail);
             }
             catch (SqlException ex)
             {
@@ -134,9 +141,9 @@ namespace RestaurantManagement.Api.Controllers
         }
 
         /// <summary>
-        /// Updates an existing customerDto.
+        /// Updates an existing orderDetailDto.
         /// </summary>
-        /// <param name="customerDto">The DTO representing the updated customerDto.</param>
+        /// <param name="orderDetailDto">The DTO representing the updated orderDetailDto.</param>
         /// <returns>
         /// The response with no content if the update is successful, or a problem details 
         /// object indicating the error if the operation fails.
@@ -147,18 +154,18 @@ namespace RestaurantManagement.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.ServiceUnavailable)]
-        public async Task<IActionResult> UpdateCustomer([FromBody] CustomerDto customerDto)
+        public async Task<IActionResult> UpdateOrderDetail([FromBody] OrderDetailDto orderDetailDto)
         {
-            _logger.LogInformation("{MethodName} method is called", nameof(UpdateCustomer));
-            var customerDetails = await _customerService.GetCustomersDetails((int?)customerDto.Id);
-            if (customerDetails == null)
+            _logger.LogInformation("{MethodName} method is called", nameof(UpdateOrderDetail));
+            var OrderDetails = await _orderDetailService.GetOrderDetailsDetails((int?)orderDetailDto.Id);
+            if (OrderDetails == null)
             {
                 return NotFound();
             }
 
             try
             {
-                await _customerService.UpdateCustomerDetails(customerDto);
+                await _orderDetailService.UpdateOrderDetailDetails(orderDetailDto);
                 return NoContent();
             }
             catch (SqlException ex)
@@ -184,9 +191,9 @@ namespace RestaurantManagement.Api.Controllers
         }
 
         /// <summary>
-        /// Deletes a customerDto by its unique identifier.
+        /// Deletes a orderDetailDto by its unique identifier.
         /// </summary>
-        /// <param name="id">The unique identifier of the customerDto to delete.</param>
+        /// <param name="id">The unique identifier of the orderDetailDto to delete.</param>
         /// <returns>
         /// The response with no content if the deletion is successful, or a problem details 
         /// object indicating the error if the operation fails.
@@ -197,18 +204,18 @@ namespace RestaurantManagement.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.ServiceUnavailable)]
-        public async Task<IActionResult> DeleteCustomer(int id)
+        public async Task<IActionResult> DeleteOrderDetail(int id)
         {
-            _logger.LogInformation("{MethodName} method is called for the id: {id}", nameof(DeleteCustomer), id);
-            var customerDto = await _customerService.GetCustomersDetails(id);
-            if (customerDto == null)
+            _logger.LogInformation("{MethodName} method is called for the id: {id}", nameof(DeleteOrderDetail), id);
+            var orderDetailDto = await _orderDetailService.GetOrderDetailsDetails(id);
+            if (orderDetailDto == null)
             {
                 return NotFound();
             }
 
             try
             {
-                await _customerService.DeleteCustomerDetails(id);
+                await _orderDetailService.DeleteOrderDetailDetails(id);
                 return NoContent();
             }
             catch (SqlException ex)
@@ -232,31 +239,6 @@ namespace RestaurantManagement.Api.Controllers
                 });
             }
         }
-        /// <summary>
-        /// Retrieves all customerDto.
-        /// </summary>
-        /// <returns>
-        /// The response with a collection of customerDto DTOs if successful, or a problem 
-        /// details object indicating the error if the operation fails.
-        /// </returns>
-        [HttpGet("getCustomerByNumber/{mobileNo}")]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<CustomerDto>))]
-        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.NotFound)]
-        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.InternalServerError)]
-        [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.ServiceUnavailable)]
-        public async Task<IActionResult> GetCustomerByPhoneNumber(string mobileNo)
-        {
-            _logger.LogInformation("{MethodName} method is called", nameof(GetAllCustomers));
-            try
-            {
-                var result = await _customerService.GetCustomerByPhoneNumber(mobileNo);
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
+
     }
 }

@@ -44,5 +44,6 @@ namespace RestaurantManagement.Application.Interfaces
         /// The task result indicates whether the deletion was successful.
         /// </returns>
         Task<bool> DeleteCustomerDetails(int id);
+        Task<IEnumerable<CustomerDto>> GetCustomerByPhoneNumber(string mobileNo);
     }
 }

@@ -23,9 +23,16 @@ services.AddScoped<IInventoryCostService, InventoryCostService>();
 services.AddScoped<IInventoryCostRepository, InventoryCostRepository>();
 services.AddScoped<IInventoryService, InventoryService>();
 services.AddScoped<IInventoryRepository, InventoryRepository>();
+services.AddScoped<IOrderDetailService, OrderDetailService>();
+services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 services.AddScoped<IUserService, UserService>();
 services.AddScoped<IUserRepository, UserRepository>();
-
+services.AddScoped<IOrderTypeService, OrderTypeService>();
+services.AddScoped<IOrderTypeRepository, OrderTypeRepository>();
+services.AddScoped<IDiscountService, DiscountService>();
+services.AddScoped<IDiscountRepository, DiscountRepository>();
+services.AddScoped<IRoleService, RoleService>();
+services.AddScoped<IRoleRepository, RoleRepository>();
 services.AddScoped<ITableMasterService, TableMasterService>();
 services.AddScoped<ITableMasterRepository, TableMasterRepository>();
 services.AddScoped<ITableDetailsService, TableDetailsService>();
