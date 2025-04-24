@@ -158,11 +158,11 @@ namespace RestaurantManagement.Api.Controllers
         public async Task<IActionResult> UpdateFoodReceivedByItem([FromBody] UpdateFoodReceivedRequestDto orderDetailDto)
         {
             _logger.LogInformation("{MethodName} method is called", nameof(UpdateFoodReceivedByItem));
-            var OrderDetails = await _orderDetailService.GetOrderDetailsDetails((int?)orderDetailDto.OrderId);
-            if (OrderDetails == null)
-            {
-                return NotFound();
-            }
+            //var OrderDetails = await _orderDetailService.GetOrderDetailsDetails((int?)orderDetailDto.OrderId);
+            //if (OrderDetails == null)
+            //{
+            //    return NotFound();
+            //}
 
             try
             {
