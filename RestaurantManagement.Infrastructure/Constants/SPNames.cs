@@ -10,7 +10,7 @@ namespace RestaurantManagement.Infrastructure.Constants
     {
         public const string SP_GETAllBILLINGDETAIL = "[sp_GetBillInformation]";
         public const string SP_INSERTBILLINGDETAIL = "[sp_InsertBillInformation]";
-        public const string SP_UPDATEBILLINGDETAIL = "sp_UpdateBillInformation";
+        public const string SP_UPDATEBILLPAIDSTATUS = "sp_UpdateBillPaidStatus";
         public const string SP_DELETEBILLINGDETAIL = "sp_DeleteBillInformation";
 
         public const string SP_GETAllCUSTOMERDETAIL = "sp_GetCustomerMaster";
@@ -28,7 +28,7 @@ namespace RestaurantManagement.Infrastructure.Constants
 
         public const string SP_GETAllORDERDETAIL = "sp_GetOrderDetails";
         public const string SP_INSERTORDERDETAIL = "sp_InsertOrderDetails";
-        public const string SP_UPDATEORDERDETAIL = "sp_UpdateOrderDetails";
+        public const string SP_UPDATEISFOODRECEIVEDBYITEM = "[sp_UpdateIsFoodReceivedByItem]";
         public const string SP_DELETEORDERDETAIL = "[sp_DeleteOrderDetails]";
         
 

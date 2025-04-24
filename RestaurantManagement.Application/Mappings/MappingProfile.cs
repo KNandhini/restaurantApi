@@ -29,6 +29,8 @@ namespace RestaurantManagement.Application.Mappings
             CreateMap<TableDetails, TableDetailsDto>().ReverseMap();
             CreateMap<OrderTypes, OrderTypeDto>().ReverseMap();
             CreateMap<TableMappingDetails, TableMappingDetailsDto>().ReverseMap();
+            CreateMap<UpdateFoodReceivedRequest, UpdateFoodReceivedRequestDto>().ReverseMap();
+
         }
     }
 }

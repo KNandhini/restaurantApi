@@ -62,9 +62,9 @@ namespace RestaurantManagement.Application.Services
 
         }
         /// <inheritdoc/>
-        public async Task UpdateOrderDetailDetails(OrderDetailDto orderDetailDto)
+        public async Task UpdateOrderDetailDetails(UpdateFoodReceivedRequestDto orderDetailDto)
         {
-            var OrderDetail = _mapper.Map<OrderDetail>(orderDetailDto);
+            var OrderDetail = _mapper.Map<UpdateFoodReceivedRequest>(orderDetailDto);
             await _orderDetailRepository.UpdateOrderDetailDetails(OrderDetail);
         }
         /// <inheritdoc/>
