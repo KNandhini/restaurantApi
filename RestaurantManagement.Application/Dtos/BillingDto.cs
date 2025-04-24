@@ -64,7 +64,7 @@ namespace RestaurantManagement.Application.Dtos
         /// Gets or sets the mode of payment used.
         /// </summary>
         [JsonPropertyName("paymentMode")]
-        public string PaymentMode { get; set; }
+        public string PaymentMode { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets a value indicating whether parcel is required.
@@ -141,7 +141,7 @@ namespace RestaurantManagement.Application.Dtos
         /// Gets or sets the name of the user who last modified the record.
         /// </summary>
         [JsonPropertyName("modifiedBy")]
-        public string ModifiedBy { get; set; }
+        public string ModifiedBy { get; set; }= string.Empty;
 
         /// <summary>
         /// Gets or sets the last modification date and time.

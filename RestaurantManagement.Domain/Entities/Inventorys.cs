@@ -44,7 +44,7 @@ namespace RestaurantManagement.Domain.Entities
         /// </summary>
         [JsonPropertyName("isVeg")]
         public bool IsVeg { get; set; } = true;
-
+       
         /// <summary>
         /// Gets or sets the description of the menu item.
         /// </summary>

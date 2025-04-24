@@ -44,6 +44,7 @@ namespace RestaurantManagement.Application.Dtos
         /// </summary>
         [JsonPropertyName("isVeg")]
         public bool IsVeg { get; set; } = true;
+        
 
         /// <summary>
         /// Gets or sets the description of the menu item.

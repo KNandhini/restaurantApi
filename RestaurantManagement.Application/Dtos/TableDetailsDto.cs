@@ -27,11 +27,16 @@ namespace RestaurantManagement.Application.Dtos
         /// </summary>
         [JsonPropertyName("tableCode")]
         public string TableCode { get; set; } = string.Empty; // Default to an empty string
-
+        /// <summary>
+        /// Name of the table who choose the table.
+        /// </summary>
+        [JsonPropertyName("tablename")]
+        public string TableName { get; set; } = string.Empty;// Default to an empty string
         /// <summary>
         /// Gets or sets the user who created the record.
         /// </summary>
         [JsonPropertyName("createdBy")]
+
         public string CreatedBy { get; set; } = string.Empty;
 
         /// <summary>
