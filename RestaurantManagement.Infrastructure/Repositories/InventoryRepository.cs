@@ -33,7 +33,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
         public async Task<Inventorys> InsertInventoryDetails(Inventorys inventorys)
         {
-            var spName = SPNames.SP_INSERTCUSTOMERDETAIL; // Name of your stored procedure
+            var spName = SPNames.SP_INSERTINVENTORYDETAIL; // Name of your stored procedure
                                                                  // Define parameters for the stored procedure
             
             
@@ -64,7 +64,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
         /// <inheritdoc/>
         public async Task UpdateInventoryDetails(Inventorys inventorys)
         {
-            var spName = SPNames.SP_UPDATECUSTOMERDETAIL; // Update the stored procedure name if necessary
+            var spName = SPNames.SP_UPDATEINVENTORYDETAIL; // Update the stored procedure name if necessary
             
 
             var parameters = new
@@ -85,7 +85,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
         public async Task<bool> DeleteInventoryDetails(int id)
         {
-            var spName = SPNames.SP_DELETECUSTOMERDETAIL; // Update the stored procedure name if necessary
+            var spName = SPNames.SP_DELETEINVENTORYDETAIL; // Update the stored procedure name if necessary
             await Task.Factory.StartNew(() =>
                 _db.Connection.Execute(spName, new { Id = id }, commandType: CommandType.StoredProcedure));
             return true;

@@ -33,7 +33,7 @@ namespace RestaurantManagement.Infrastructure.Constants
         
 
         public const string SP_GETAllINVENTORYCOSTDETAIL = "sp_GetInventoryCost";
-        public const string SP_INSERTINVENTORYCOSTDETAIL = "[sp_InsertInventoryCost";
+        public const string SP_INSERTINVENTORYCOSTDETAIL = "sp_InsertInventoryCost";
         public const string SP_UPDATEINVENTORYCOSTDETAIL = "sp_UpdateInventoryCost";
         public const string SP_DELETEINVENTORYCOSTDETAIL = "sp_DeleteInventoryCost";
 
@@ -72,14 +72,14 @@ namespace RestaurantManagement.Infrastructure.Constants
 
 
         public const string SP_GETALLTABLEMASTERDETAIL = "sp_GetTableMaster";
-        public const string SP_INSERTTABLEMASTERDETAIL = "[sp_InsertTABLEMASTERMaster]";
-        public const string SP_UPDATETABLEMASTERDETAIL = "sp_UpdateTABLEMASTERMaster";
-        public const string SP_DELETETABLEMASTERDETAIL = "sp_DeleteTABLEMASTERMaster";
+        public const string SP_INSERTTABLEMASTERDETAIL = "sp_InsertTableMaster";
+        public const string SP_UPDATETABLEMASTERDETAIL = "sp_UpdateTableMaster";
+        public const string SP_DELETETABLEMASTERDETAIL = "sp_DeleteTableMaster";
 
         public const string SP_GETALLTABLEDETAILS = "sp_GetTableDetails";
         public const string SP_INSERTTABLEDETAILS = "[sp_InsertTableDetails]";
-        public const string SP_UPDATETABLEDETAILS = "sp_UpdateTABLEMASTERMaster";
-        public const string SP_DELETETABLEDETAILS = "sp_DeleteTABLEMASTERMaster";
+        public const string SP_UPDATETABLEDETAILS = "sp_UpdateTableDetails";
+        public const string SP_DELETETABLEDETAILS = "sp_DeleteTableDetails";
 
 
         public const string SP_GETAllORDERTYPEMASTER = "sp_GetOrderTypeMaster";

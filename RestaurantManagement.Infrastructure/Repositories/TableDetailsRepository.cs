@@ -57,16 +57,17 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 TableCode= TableDetails.TableCode,
                 CreatedBy = TableDetails.CreatedBy,
 
+
             };
 
             // Execute the stored procedure and retrieve the inserted data
-            var insertedData = await _db.Connection.QuerySingleOrDefaultAsync<TableDetails>(
-                spName,
-                parameters,
-                commandType: CommandType.StoredProcedure
-            );
+            await _db.Connection.ExecuteAsync(
+    spName,
+    parameters,
+    commandType: CommandType.StoredProcedure
+);
 
-            return insertedData;
+            return TableDetails;
 
 
         }

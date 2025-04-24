@@ -60,7 +60,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
         /// <inheritdoc/>
         public async Task UpdateInventoryCostDetails(InventoryCost inventoryCosts)
         {
-            var spName = SPNames.SP_UPDATECUSTOMERDETAIL; // Update the stored procedure name if necessary
+            var spName = SPNames.SP_UPDATEINVENTORYCOSTDETAIL; // Update the stored procedure name if necessary
             
 
             var parameters = new
@@ -77,7 +77,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
         public async Task<bool> DeleteInventoryCostDetails(int id)
         {
-            var spName = SPNames.SP_DELETECUSTOMERDETAIL; // Update the stored procedure name if necessary
+            var spName = SPNames.SP_DELETEINVENTORYCOSTDETAIL; // Update the stored procedure name if necessary
             await Task.Factory.StartNew(() =>
                 _db.Connection.Execute(spName, new { Id = id }, commandType: CommandType.StoredProcedure));
             return true;
