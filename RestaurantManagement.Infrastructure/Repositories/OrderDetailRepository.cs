@@ -95,6 +95,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                                 Cgst= Convert.ToDecimal(reader["Cgst"]),
                                 Sgst= Convert.ToDecimal(reader["Sgst"]),
                                 RoundOff = Convert.ToDecimal(reader["RoundOff"]),
+                                SubTotal = Convert.ToDecimal(reader["SubTotal"]),
 
                                 GrandTotal = Convert.ToDecimal(reader["GrandTotal"]),
                                 IsPaymentDone= Convert.ToBoolean(reader["IsPaymentDone"]),

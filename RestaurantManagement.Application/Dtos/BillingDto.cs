@@ -112,6 +112,11 @@ namespace RestaurantManagement.Application.Dtos
         /// </summary>
         [JsonPropertyName("roundOff")]
         public decimal? RoundOff { get; set; }
+        /// <summary>
+        /// Gets or sets the sub total amount including only items charges.
+        /// </summary>
+        [JsonPropertyName("subTotal")]
+        public decimal? SubTotal { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the total amount including all charges.
