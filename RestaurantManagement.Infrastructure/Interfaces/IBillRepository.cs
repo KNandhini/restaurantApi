@@ -34,7 +34,7 @@ namespace RestaurantManagement.Infrastructure.Interfaces
         /// <returns>
         /// Not returns anything.
         /// </returns>
-        Task UpdateBillDetails(Billings Bill);
+        Task UpdateBillDetails(BillingUpdate Bill);
         /// <summary>
         /// Deletes a Bill by its unique identifier.
         /// </summary>
