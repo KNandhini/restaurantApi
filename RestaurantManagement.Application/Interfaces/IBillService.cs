@@ -35,7 +35,7 @@ namespace RestaurantManagement.Application.Interfaces
         /// <returns>
         ///The task result indicates whether the update was successful.
         /// </returns>
-        Task UpdateBillDetails(BillingDto BillingDto);
+        Task UpdateBillDetails(BillingUpdateDto BillingDto);
         /// <summary>
         /// Deletes a BillingDto by its unique identifier.
         /// </summary>

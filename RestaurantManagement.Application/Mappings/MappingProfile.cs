@@ -23,6 +23,8 @@ namespace RestaurantManagement.Application.Mappings
             CreateMap<OrderItem, OrderItemDto>().ReverseMap();
             CreateMap<InventoryCost, InventoryCostDto>().ReverseMap();
             CreateMap<Users, UserDto>().ReverseMap();
+            CreateMap<RestaurantProfiles, RestaurantProfilesDto>().ReverseMap();
+
             CreateMap<Roles, RoleDto>().ReverseMap();
             CreateMap<Discounts, DiscountDto>().ReverseMap();
             CreateMap<TableMaster, TableMasterDto>().ReverseMap();
@@ -30,6 +32,7 @@ namespace RestaurantManagement.Application.Mappings
             CreateMap<OrderTypes, OrderTypeDto>().ReverseMap();
             CreateMap<TableMappingDetails, TableMappingDetailsDto>().ReverseMap();
             CreateMap<UpdateFoodReceivedRequest, UpdateFoodReceivedRequestDto>().ReverseMap();
+            CreateMap<BillingUpdateDto, BillingUpdate>().ReverseMap();
 
         }
     }

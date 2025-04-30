@@ -52,9 +52,9 @@ namespace RestaurantManagement.Application.Services
 
         }
         /// <inheritdoc/>
-        public async Task UpdateBillDetails(BillingDto billingDto)
+        public async Task UpdateBillDetails(BillingUpdateDto billingDto)
         {
-            var Bill = _mapper.Map<Billings>(billingDto);
+            var Bill = _mapper.Map<BillingUpdate>(billingDto);
             await _BillRepository.UpdateBillDetails(Bill);
         }
         /// <inheritdoc/>

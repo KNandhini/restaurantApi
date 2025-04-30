@@ -74,7 +74,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
         }
         /// <inheritdoc/>
-        public async Task UpdateBillDetails(Billings bill)
+        public async Task UpdateBillDetails(BillingUpdate bill)
         {
             var spName = SPNames.SP_UPDATEBILLPAIDSTATUS; // Update the stored procedure name if necessary
             
