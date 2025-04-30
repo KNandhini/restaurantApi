@@ -54,6 +54,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 DiscountAmount=bill.DiscountAmount,
                 NetAmount=bill.NetAmount,
                 SubTotal=bill.SubTotal,
+                RoundOff=bill.RoundOff,
                 Sgst=bill.Sgst,
                 Cgst = bill.Cgst,
                 GrandTotal=bill.GrandTotal,
