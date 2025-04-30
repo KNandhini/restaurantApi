@@ -64,7 +64,7 @@ namespace RestaurantManagement.Application.Dtos
         /// Gets or sets the mode of payment used.
         /// </summary>
         [JsonPropertyName("paymentMode")]
-        public string PaymentMode { get; set; }
+        public string PaymentMode { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets a value indicating whether parcel is required.
@@ -107,6 +107,16 @@ namespace RestaurantManagement.Application.Dtos
         /// </summary>
         [JsonPropertyName("sgst")]
         public decimal? Sgst { get; set; }
+        /// <summary>
+        /// Gets or sets the SGST (State GST) amount.
+        /// </summary>
+        [JsonPropertyName("roundOff")]
+        public decimal? RoundOff { get; set; }
+        /// <summary>
+        /// Gets or sets the sub total amount including only items charges.
+        /// </summary>
+        [JsonPropertyName("subTotal")]
+        public decimal? SubTotal { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the total amount including all charges.
@@ -136,7 +146,7 @@ namespace RestaurantManagement.Application.Dtos
         /// Gets or sets the name of the user who last modified the record.
         /// </summary>
         [JsonPropertyName("modifiedBy")]
-        public string ModifiedBy { get; set; }
+        public string ModifiedBy { get; set; }= string.Empty;
 
         /// <summary>
         /// Gets or sets the last modification date and time.

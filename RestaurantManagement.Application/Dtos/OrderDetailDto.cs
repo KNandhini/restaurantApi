@@ -155,6 +155,11 @@ namespace RestaurantManagement.Application.Dtos
         /// </summary>
         [JsonPropertyName("serviceCharge")]
         public decimal? ServiceCharge { get; set; } = 0;
+        /// <summary>
+        /// Gets or sets the sub total amount including only items charges.
+        /// </summary>
+        [JsonPropertyName("subTotal")]
+        public decimal? SubTotal { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the discount amount.

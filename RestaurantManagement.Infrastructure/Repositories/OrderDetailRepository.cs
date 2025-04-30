@@ -83,6 +83,22 @@ namespace RestaurantManagement.Infrastructure.Repositories
                                 OrderType = reader["OrderType"]?.ToString(),
                                 OrderSubType = reader["OrderSubType"]?.ToString(),
                                 WaiterName = reader["WaiterName"]?.ToString(),
+                                BillId = Convert.ToInt32(reader["BillId"]),
+                                DiscountId= Convert.ToInt32(reader["DiscountId"]),
+                                PaymentMode= reader["PaymentMode"]?.ToString(),
+                                // IsParcelRequired= Convert.ToBoolean(reader["IsParcelRequired"]),
+                               
+                                ParcelAmount =  Convert.ToDecimal(reader["ParcelAmount"]),
+                                ServiceCharge= Convert.ToDecimal(reader["ServiceCharge"]),
+                                DiscountAmount= Convert.ToDecimal(reader["DiscountAmount"]),
+                                NetAmount= Convert.ToDecimal(reader["NetAmount"]),
+                                Cgst= Convert.ToDecimal(reader["Cgst"]),
+                                Sgst= Convert.ToDecimal(reader["Sgst"]),
+                                RoundOff = Convert.ToDecimal(reader["RoundOff"]),
+                                SubTotal = Convert.ToDecimal(reader["SubTotal"]),
+
+                                GrandTotal = Convert.ToDecimal(reader["GrandTotal"]),
+                                IsPaymentDone= Convert.ToBoolean(reader["IsPaymentDone"]),
                                 ItemDetails = new List<OrderItem>()
                             };
                         }
@@ -107,7 +123,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 }
             }
 
-            return order;
+             return order;
         }
 
         public async Task<OrderDetail> InsertOrderDetails(OrderDetail orderDetails)
