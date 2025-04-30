@@ -53,6 +53,8 @@ namespace RestaurantManagement.Infrastructure.Constants
         public const string SP_UPDATETABLEMASTER = "sp_UpdateTableMaster";
         public const string SP_DELETETABLEMASTER = "sp_DeleteTableMaster";
 
+        public const string SP_GETAllRESTAURANTPROFILEMASTER = "sp_GetRestaurantProfile";
+        public const string SP_UPDATERESTAURANTPROFILEMASTER = "sp_UpdateRestaurantProfile";
 
         public const string SP_GETAllUSERMASTER = "sp_GetUserMaster";
         public const string SP_INSERTUSERMASTER = "[sp_InsertUserMaster]";
