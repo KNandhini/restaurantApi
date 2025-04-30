@@ -27,6 +27,8 @@ services.AddScoped<IOrderDetailService, OrderDetailService>();
 services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 services.AddScoped<IUserService, UserService>();
 services.AddScoped<IUserRepository, UserRepository>();
+services.AddScoped<IRestaurantProfileService, RestaurantProfileService>();
+services.AddScoped<IRestaurantProfileRepository, RestaurantProfileRepository>();
 services.AddScoped<IOrderTypeService, OrderTypeService>();
 services.AddScoped<IOrderTypeRepository, OrderTypeRepository>();
 services.AddScoped<IDiscountService, DiscountService>();
