@@ -147,14 +147,14 @@ namespace RestaurantManagement.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.ServiceUnavailable)]
-        public async Task<IActionResult> UpdateBill([FromBody] BillingDto billingDto)
+        public async Task<IActionResult> UpdateBill([FromBody] BillingUpdateDto billingDto)
         {
             _logger.LogInformation("{MethodName} method is called", nameof(UpdateBill));
-            var billingDetails = await _billService.GetBillsDetails((int?)billingDto.Id);
-            if (billingDetails == null)
-            {
-                return NotFound();
-            }
+            //var billingDetails = await _billService.GetBillsDetails((int?)billingDto.Id);
+            //if (billingDetails == null)
+            //{
+            //    return NotFound();
+            //}
 
             try
             {

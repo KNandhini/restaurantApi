@@ -54,6 +54,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 DiscountAmount=bill.DiscountAmount,
                 NetAmount=bill.NetAmount,
                 SubTotal=bill.SubTotal,
+                RoundOff=bill.RoundOff,
                 Sgst=bill.Sgst,
                 Cgst = bill.Cgst,
                 GrandTotal=bill.GrandTotal,
@@ -73,7 +74,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
         }
         /// <inheritdoc/>
-        public async Task UpdateBillDetails(Billings bill)
+        public async Task UpdateBillDetails(BillingUpdate bill)
         {
             var spName = SPNames.SP_UPDATEBILLPAIDSTATUS; // Update the stored procedure name if necessary
             
