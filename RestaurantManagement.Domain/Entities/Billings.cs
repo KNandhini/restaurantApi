@@ -111,7 +111,7 @@ namespace RestaurantManagement.Domain.Entities
         /// Gets or sets the SGST (State GST) amount.
         /// </summary>
         [JsonPropertyName("roundOff")]
-        public decimal? RoundOff { get; set; }
+        public decimal? RoundOff { get; set; } = 0;
         /// <summary>
         /// Gets or sets the sub total amount including only items charges.
         /// </summary>

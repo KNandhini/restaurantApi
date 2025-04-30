@@ -160,7 +160,11 @@ namespace RestaurantManagement.Application.Dtos
         /// </summary>
         [JsonPropertyName("subTotal")]
         public decimal? SubTotal { get; set; } = 0;
-
+        /// <summary>
+        /// Gets or sets the SGST (State GST) amount.
+        /// </summary>
+        [JsonPropertyName("roundOff")]
+        public decimal? RoundOff { get; set; } = 0;
         /// <summary>
         /// Gets or sets the discount amount.
         /// </summary>
