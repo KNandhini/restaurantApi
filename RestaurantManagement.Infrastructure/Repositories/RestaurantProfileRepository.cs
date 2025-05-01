@@ -53,7 +53,9 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 State = restaurantProfile.State,
                 Country = restaurantProfile.Country,
                 ZipCode = restaurantProfile.ZipCode,
-
+                GSTNo = restaurantProfile.GSTNo,
+                CGST = restaurantProfile.CGST,   
+                SGST = restaurantProfile.SGST, 
                 ModifiedBy = restaurantProfile.ModifiedBy
             };
             await Task.Factory.StartNew(() =>

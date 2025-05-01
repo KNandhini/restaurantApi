@@ -29,6 +29,9 @@ namespace RestaurantManagement.Domain.Entities
         [JsonPropertyName("country")]
         public string Country { get; set; } = string.Empty;
 
+        [JsonPropertyName("gstNo")]
+        public string GSTNo { get; set; } = string.Empty;
+
         [JsonPropertyName("cgst")]
         public decimal CGST { get; set; }
 

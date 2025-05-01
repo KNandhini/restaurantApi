@@ -14,21 +14,25 @@ namespace RestaurantManagement.Domain.Entities
         /// </summary>
         [JsonPropertyName("id")]
         public int Id { get; set; } = 0; // Default to 0
+
         /// <summary>
         /// Name or description of the order type.
         /// </summary>
         [JsonPropertyName("discountType")]
         public string DiscountType { get; set; } = string.Empty; // Default to an empty string
+
         /// <summary>
         /// Discount percentage applied to the order.
         /// </summary>
         [JsonPropertyName("percentage")]
-        public decimal? Percentage { get; set; } = null; // Default to null
+        public string Percentage { get; set; } = string.Empty; // Default to null
+
         /// <summary>
         /// Gets or sets the user who created the record.
         /// </summary>
         [JsonPropertyName("createdBy")]
         public string CreatedBy { get; set; } = string.Empty;
+
         /// <summary>
         /// Date and time when the sale record was created.
         /// </summary>
@@ -47,7 +51,10 @@ namespace RestaurantManagement.Domain.Entities
         [JsonPropertyName("modifiedDate")]
         public DateTime? ModifiedDate { get; set; } = null; // Default to null
 
+        /// <summary>
+        /// Unique discount code.
+        /// </summary>
+        [JsonPropertyName("discountCode")]
+        public string DiscountCode { get; set; } = string.Empty; // Default to an empty string
     }
-
-
-    }
+}

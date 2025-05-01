@@ -42,6 +42,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
             {
                 Percentage = discount.Percentage,
                 DiscountType = discount.DiscountType,
+                DiscountCode = discount.DiscountCode,
                 CreatedBy = discount.CreatedBy
 
             };
@@ -68,6 +69,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 Id = discount.Id,
                 Percentage = discount.Percentage,
                 DiscountType = discount.DiscountType,
+                DiscountCode = discount.DiscountCode,
                 ModifiedBy = discount.ModifiedBy,
 
 
