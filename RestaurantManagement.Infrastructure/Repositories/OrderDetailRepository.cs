@@ -198,8 +198,8 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
             var parameters = new
             {
+                Id=orderDetails.Id,
                 OrderId = orderDetails.OrderId,
-                ItemId = orderDetails.ItemId,
                 IsFoodReceived = orderDetails.IsFoodReceived,
                 IsCheckOut = orderDetails.IsCheckOut,
                 ModifiedBy = orderDetails.ModifiedBy,

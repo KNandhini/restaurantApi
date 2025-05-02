@@ -315,8 +315,8 @@ namespace RestaurantManagement.Application.Dtos
         /// <summary>
         /// Gets or sets the comma-separated item IDs (e.g., "2,3,1").
         /// </summary>
-        [JsonPropertyName("itemId")]
-        public string ItemId { get; set; } = string.Empty;
+        [JsonPropertyName("id")]
+        public string Id { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets a value indicating whether the food is received.
