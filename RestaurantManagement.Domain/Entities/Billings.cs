@@ -79,6 +79,11 @@ namespace RestaurantManagement.Domain.Entities
         public decimal? ParcelAmount { get; set; }
 
         /// <summary>
+        /// Gets or sets the No of Person.
+        /// </summary>
+        [JsonPropertyName("noofPerson")]
+        public int? NoofPerson { get; set; } = 0;
+        /// <summary>
         /// Gets or sets the service charge amount.
         /// </summary>
         [JsonPropertyName("serviceCharge")]
