@@ -71,6 +71,11 @@ namespace RestaurantManagement.Application.Dtos
         /// </summary>
         [JsonPropertyName("isParcelRequired")]
         public bool? IsParcelRequired { get; set; }
+        /// <summary>
+        /// Gets or sets the No of Person.
+        /// </summary>
+        [JsonPropertyName("noofPerson")]
+        public int? NoofPerson { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the amount charged for parcel.
