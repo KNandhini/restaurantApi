@@ -43,6 +43,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 Percentage = discount.Percentage,
                 DiscountType = discount.DiscountType,
                 DiscountCode = discount.DiscountCode,
+                ValidUpto=discount.ValidUpto,
                 CreatedBy = discount.CreatedBy
 
             };
@@ -70,6 +71,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 Percentage = discount.Percentage,
                 DiscountType = discount.DiscountType,
                 DiscountCode = discount.DiscountCode,
+                ValidUpto = discount.ValidUpto,
                 ModifiedBy = discount.ModifiedBy,
 
 

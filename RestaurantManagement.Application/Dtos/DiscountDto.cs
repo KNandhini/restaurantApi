@@ -28,6 +28,12 @@ namespace RestaurantManagement.Application.Dtos
         public string Percentage { get; set; } = string.Empty; // Default to null
 
         /// <summary>
+        /// Valid up to  applied to the order.
+        /// </summary>
+        [JsonPropertyName("validUpto")]
+        public string ValidUpto { get; set; } = null; // Default to null
+
+        /// <summary>
         /// Gets or sets the user who created the record.
         /// </summary>
         [JsonPropertyName("createdBy")]
