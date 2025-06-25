@@ -55,6 +55,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
             {
                 TableId = TableDetails.TableId,
                 TableCode= TableDetails.TableCode,
+                NoofSeats=TableDetails.NoofSeats,
                 CreatedBy = TableDetails.CreatedBy,
 
 
@@ -82,6 +83,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 Id = TableDetails.Id,
                 TableId = TableDetails.TableId,
                 TableCode = TableDetails.TableCode,
+                NoofSeats = TableDetails.NoofSeats,
                 ModifiedBy = TableDetails.ModifiedBy,
 
             };
