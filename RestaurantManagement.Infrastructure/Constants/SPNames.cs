@@ -95,6 +95,8 @@ namespace RestaurantManagement.Infrastructure.Constants
 
         public const string SP_UPDATEACTIVEORDERITEMTRANSACTION = "sp_UpdateActiveOrderItemTransaction";
         public const string SP_GETALLTABLEMAPPEDDETAILS = "sp_GetTableStatusMapping";
+        public const string SP_GETSOLDITEMWITHPRICEREPORT = "sp_GetSoldItemwithPriceReport";
+
     }
 
 

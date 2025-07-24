@@ -87,7 +87,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                                 DiscountId= Convert.ToInt32(reader["DiscountId"]),
                                 PaymentMode= reader["PaymentMode"]?.ToString(),
                                 // IsParcelRequired= Convert.ToBoolean(reader["IsParcelRequired"]),
-                               
+                               NoofPerson = Convert.ToInt32(reader["NoofPerson"]),
                                 ParcelAmount =  Convert.ToDecimal(reader["ParcelAmount"]),
                                 ServiceCharge= Convert.ToDecimal(reader["ServiceCharge"]),
                                 DiscountAmount= Convert.ToDecimal(reader["DiscountAmount"]),

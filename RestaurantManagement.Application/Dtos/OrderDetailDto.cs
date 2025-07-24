@@ -152,6 +152,11 @@ namespace RestaurantManagement.Application.Dtos
         /// </summary>
         [JsonPropertyName("parcelAmount")]
         public decimal? ParcelAmount { get; set; } = 0;
+        /// <summary>
+        /// Gets or sets the No of Person.
+        /// </summary>
+        [JsonPropertyName("noofPerson")]
+        public int? NoofPerson { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the service charge amount.
