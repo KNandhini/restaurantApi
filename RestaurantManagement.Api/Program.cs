@@ -39,6 +39,8 @@ services.AddScoped<ITableMasterService, TableMasterService>();
 services.AddScoped<ITableMasterRepository, TableMasterRepository>();
 services.AddScoped<ITableDetailsService, TableDetailsService>();
 services.AddScoped<ITableDetailsRepository, TableDetailsRepository>();
+services.AddScoped<IReportService, ReportService>();
+services.AddScoped<IReportRepository, ReportRepository>();
 services.AddScoped<IDataBaseConnection, DataBaseConnection>();
 // Add services to the container.
 

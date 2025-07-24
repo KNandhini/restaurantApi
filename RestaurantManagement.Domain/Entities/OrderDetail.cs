@@ -153,6 +153,11 @@ namespace RestaurantManagement.Domain.Entities
         /// </summary>
         [JsonPropertyName("serviceCharge")]
         public decimal? ServiceCharge { get; set; } = 0;
+        /// <summary>
+        /// Gets or sets the No of Person.
+        /// </summary>
+        [JsonPropertyName("noofPerson")]
+        public int? NoofPerson { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the discount amount.
