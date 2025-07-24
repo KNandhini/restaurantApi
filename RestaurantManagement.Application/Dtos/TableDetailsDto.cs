@@ -38,7 +38,7 @@ namespace RestaurantManagement.Application.Dtos
         /// No of seats  for the table record.
         /// </summary>
         [JsonPropertyName("noofSeats")]
-        public int NoofSeats { get; set; } = 0;
+        public string NoofSeats { get; set; } = string.Empty;
         /// <summary>
         /// Gets or sets the user who created the record.
         /// </summary>

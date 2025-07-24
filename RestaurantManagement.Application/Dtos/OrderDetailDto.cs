@@ -35,7 +35,10 @@ namespace RestaurantManagement.Application.Dtos
         public int TableId { get; set; } = 0;
         [JsonPropertyName("customerId")]
         public int CustomerId { get; set; } = 0;
-     
+
+        [JsonPropertyName("seatId")]
+        public string SeatId { get; set; } = string.Empty;
+
         /// <summary>
         /// Username of the person who created the order.
         /// </summary>

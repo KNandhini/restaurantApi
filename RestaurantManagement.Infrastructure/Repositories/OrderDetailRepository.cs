@@ -144,6 +144,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                     CustomerInfo =orderDetails.CustomerInfo,
                     OrderId =orderDetails.OrderId,
                     OrderItems =orderItemsJson,
+                    SeatId =orderDetails.SeatId,
                     TableId = orderDetails.TableId,
                     OrderType = orderDetails.OrderType,
                     WaiterId = orderDetails.WaiterId,
