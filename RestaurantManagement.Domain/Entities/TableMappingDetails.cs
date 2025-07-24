@@ -45,6 +45,12 @@ namespace RestaurantManagement.Domain.Entities
         /// </summary>
         [JsonPropertyName("status")]
         public string Status { get; set; } = string.Empty; // Default to an empty string
+
+        /// <summary>
+        /// No of seats  for the table record.
+        /// </summary>
+        [JsonPropertyName("seatId")]
+        public int seatId { get; set; } = 0;
         /// <summary>
         /// Gets or sets the user who created the record.
         /// </summary>
