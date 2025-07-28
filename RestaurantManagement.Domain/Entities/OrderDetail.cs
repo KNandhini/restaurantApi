@@ -241,7 +241,12 @@ namespace RestaurantManagement.Domain.Entities
         /// </summary>
         [JsonPropertyName("itemName")]
         public string? ItemName { get; set; } = string.Empty;
-
+        /// <summary>
+        /// Command of the item.
+        /// </summary>
+        [JsonPropertyName("itemComment")]
+        public string? ItemComment { get; set; } = string.Empty;
+        
         /// <summary>
         /// Quantity of the item.
         /// </summary>

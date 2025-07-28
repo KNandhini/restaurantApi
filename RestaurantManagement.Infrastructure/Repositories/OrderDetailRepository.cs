@@ -110,6 +110,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                             ItemId = Convert.ToInt32(reader["itemId"]),
                             ItemCode = reader["itemCode"]?.ToString(),
                             ItemName = reader["itemName"]?.ToString(),
+                            ItemComment = reader["itemComment"]?.ToString(),
                             Qty = Convert.ToInt32(reader["qty"]),
                             Price = Convert.ToDecimal(reader["price"]),
                             Status = (reader["status"])?.ToString(),
