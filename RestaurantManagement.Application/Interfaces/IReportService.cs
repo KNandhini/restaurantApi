@@ -18,7 +18,7 @@ namespace RestaurantManagement.Application.Interfaces
      /// <returns>
      /// The task result contains a collection of ReportDto DTOs. if successful, or null if no Reports match the provided identifier.
      /// </returns>
-        Task<string> GetReportsDetails(DateTime? startDate, DateTime? endDate,
+        Task<string> GetReportsDetails(string reportType,DateTime? startDate, DateTime? endDate,
              string category,
             string subCategory,
             string itemName,

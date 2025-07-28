@@ -30,7 +30,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
         }
 
         /// <inheritdoc/>
-        public async Task<string> GetReportsDetails(DateTime? startDate, DateTime? endDate,
+        public async Task<string> GetReportsDetails(string reportType, DateTime? startDate, DateTime? endDate,
              string category,
             string subCategory,
             string itemName,
@@ -48,7 +48,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 await using (var command = new SqlCommand(spName, connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@StartDate", startDate);
+                    command.Parameters.AddWithValue("@ReportType", string.IsNullOrWhiteSpace(reportType) ? (object)DBNull.Value : reportType.Trim()); command.Parameters.AddWithValue("@StartDate", startDate);
                     command.Parameters.AddWithValue("@EndDate", endDate);
                     command.Parameters.AddWithValue("@Category", string.IsNullOrWhiteSpace(category) ? (object)DBNull.Value : category.Trim());
                     command.Parameters.AddWithValue("@SubCategory", string.IsNullOrWhiteSpace(subCategory) ? (object)DBNull.Value : subCategory.Trim());
@@ -63,7 +63,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                     {
                         adapter.Fill(ds);
                         DataTable soldItemTable = ds.Tables[0];
-                        return GenerateExcelusingDatatable(soldItemTable);
+                        return GenerateExcelusingDatatable(soldItemTable,reportType);
                     }
                 }
             }
@@ -73,7 +73,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 return ex.Message;
             }
         }
-        private static string GenerateExcelusingDatatable(DataTable dt)
+        private static string GenerateExcelusingDatatable(DataTable dt, string reportType)
         {
             try
             {
@@ -96,17 +96,24 @@ namespace RestaurantManagement.Infrastructure.Repositories
                     titleRange.Style.Font.FontSize = 16;
                    
                     rowCount++;
+                    
+                    string subtitleText = "Report";
+                    if (!string.IsNullOrWhiteSpace(reportType))
+                    {
+                        if (reportType.Trim().ToLower() == "item")
+                            subtitleText = "Sold Item Report";
+                        else if (reportType.Trim().ToLower() == "sales")
+                            subtitleText = "Sold Sales Report";
+                    }
                     var subtitleRange = ws.Range(rowCount, colCount, rowCount, colmaxLength);
                     subtitleRange.Merge();
-                    subtitleRange.Value = "Sold Item Report";
+                    subtitleRange.Value = subtitleText; 
                     subtitleRange.Style.Font.Bold = true;
-                    subtitleRange.Style.Font.FontSize = 12;
+                    subtitleRange.Style.Font.FontSize = 16;
 
                     rowCount++;
-                    ws.Cell(1, colmaxLength).Value = "Sold Item Report";
-                    ws.Cell(1, colmaxLength).Style.Font.Bold = true;
-                    ws.Cell(1, colmaxLength).Style.Font.FontSize = 16;
-      
+
+                    
                     // Add column headers with "S.No"
                     int rowStart = 3;
                   
@@ -122,6 +129,49 @@ namespace RestaurantManagement.Infrastructure.Repositories
                         {
                             ws.Cell(rowStart + i + 1, j + 1).Value = dt.Rows[i][j]?.ToString();
                         }
+                    }
+                    if (reportType.Trim().ToLower() == "sales")
+                    {
+                        string[] columnsToTotal = new[]
+                        {
+                        "No of Person", "Parcel Amount", "Sub Total", "Discount Amount","Net Amount", "CGST", "SGST", "Grand Total"
+    };
+
+                        int totalRowIndex = dt.Rows.Count + rowStart + 1;
+
+                        int startTotalCol = dt.Columns.IndexOf("No of Person"); 
+
+                        if (startTotalCol > 1)
+                        {
+                            ws.Range(totalRowIndex, 1, totalRowIndex, startTotalCol).Merge();
+                            ws.Cell(totalRowIndex, 1).Value = "TOTAL";
+                            ws.Cell(totalRowIndex, 1).Style.Font.Bold = true;
+                            ws.Cell(totalRowIndex, 1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                        }
+
+                        // ➕ Add totals from "No of Person" column onward
+                        foreach (DataColumn column in dt.Columns)
+                        {
+                            if (columnsToTotal.Contains(column.ColumnName))
+                            {
+                                double total = 0;
+                                foreach (DataRow row in dt.Rows)
+                                {
+                                    if (double.TryParse(row[column.ColumnName]?.ToString(), out double value))
+                                        total += value;
+                                }
+
+                                int currentCol = dt.Columns.IndexOf(column) + 1;
+                                ws.Cell(totalRowIndex, currentCol).Value = total;
+                                ws.Cell(totalRowIndex, currentCol).Style.Font.Bold = true;
+                            }
+                        }
+
+                        
+                        var totalRow = ws.Range(totalRowIndex, 1, totalRowIndex, dt.Columns.Count);
+                        totalRow.Style.Border.TopBorder = XLBorderStyleValues.Thin;
+                        totalRow.Style.Border.BottomBorder = XLBorderStyleValues.Medium;
+                        totalRow.Style.Fill.BackgroundColor = XLColor.LightGray;
                     }
 
                     // Auto-adjust columns
@@ -153,7 +203,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
                     titleRange.Style.Border.LeftBorder = XLBorderStyleValues.Thick;
                     titleRange.Style.Border.RightBorder = XLBorderStyleValues.Thick;
                     // Save Excel
-                    //filePath = Path.Combine(folderPath, "SoldItemsReport.xlsx");
+                    //filePath = Path.Combine(folderPath, "sp_GetSoldItemwithPriceReport.xlsx");
                     wb.SaveAs(filePath);
                     return filePath;
                 }

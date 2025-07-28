@@ -31,13 +31,13 @@ namespace RestaurantManagement.Application.Services
             _mapper = mapper;
         }
         /// <inheritdoc/>
-        public async Task<string> GetReportsDetails(DateTime? startDate, DateTime? endDate,
+        public async Task<string> GetReportsDetails(string reportType,DateTime? startDate, DateTime? endDate,
              string category,
             string subCategory,
             string itemName,
             bool? isVeg)
         {
-            return await _ReportRepository.GetReportsDetails(startDate, endDate, category, subCategory, itemName, isVeg);
+            return await _ReportRepository.GetReportsDetails(reportType,startDate, endDate, category, subCategory, itemName, isVeg);
 
         }
         public async Task<(MemoryStream memory, string path)> DownloadData(string filepath)
