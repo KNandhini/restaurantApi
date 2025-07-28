@@ -40,7 +40,7 @@ namespace RestaurantManagement.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.ServiceUnavailable)]
-        public async Task<IActionResult> GenerateSoldItemReports([FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate,
+        public async Task<IActionResult> GenerateSoldItemReports([FromQuery] string reportType, [FromQuery] DateTime? startDate, [FromQuery] DateTime? endDate,
             [FromQuery] string category=null,
           [FromQuery] string subCategory=null,
            [FromQuery] string itemName=null,
@@ -49,7 +49,7 @@ namespace RestaurantManagement.Api.Controllers
             _logger.LogInformation("{MethodName} method is called", nameof(GenerateSoldItemReports));
             try
             {
-                var result = await _reportService.GetReportsDetails(startDate,endDate,category,subCategory,itemName,isVeg);
+                var result = await _reportService.GetReportsDetails(reportType,startDate, endDate,category,subCategory,itemName,isVeg);
                 return await PrepareFileForDownload(result.ToString(), "Excel");
             }
             catch (Exception ex)
