@@ -243,6 +243,9 @@ namespace RestaurantManagement.Application.Dtos
         [JsonPropertyName("itemName")]
         public string? ItemName { get; set; } = string.Empty;
 
+        [JsonPropertyName("itemComment")]
+        public string? ItemComment { get; set; } = string.Empty;
+
         /// <summary>
         /// Quantity of the item.
         /// </summary>
