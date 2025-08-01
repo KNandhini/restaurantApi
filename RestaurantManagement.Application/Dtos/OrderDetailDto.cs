@@ -315,6 +315,7 @@ namespace RestaurantManagement.Application.Dtos
 
        
     }
+    
     public class UpdateFoodReceivedRequestDto
     {
         /// <summary>
@@ -327,7 +328,7 @@ namespace RestaurantManagement.Application.Dtos
         /// Gets or sets the comma-separated item IDs (e.g., "2,3,1").
         /// </summary>
         [JsonPropertyName("id")]
-        public string Id { get; set; } = string.Empty;
+        public int Id { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets a value indicating whether the food is received.
@@ -340,6 +341,8 @@ namespace RestaurantManagement.Application.Dtos
         /// </summary>
         [JsonPropertyName("isCheckOut")]
         public bool IsCheckOut { get; set; } = false;
+        [JsonPropertyName("review")]
+        public string? Review { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the modified by username.

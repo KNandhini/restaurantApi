@@ -314,9 +314,11 @@ namespace RestaurantManagement.Domain.Entities
 
       
     }
+
+    
     public class UpdateFoodReceivedRequest
     {
-        
+
 
         /// <summary>
         /// Gets or sets the order ID.
@@ -328,7 +330,7 @@ namespace RestaurantManagement.Domain.Entities
         /// Gets or sets the comma-separated item IDs (e.g., "2,3,1").
         /// </summary>
         [JsonPropertyName("id")]
-        public string Id { get; set; } = string.Empty;
+        public int Id { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets a value indicating whether the food is received.
@@ -341,6 +343,10 @@ namespace RestaurantManagement.Domain.Entities
         /// </summary>
         [JsonPropertyName("isCheckOut")]
         public bool IsCheckOut { get; set; } = false;
+
+        [JsonPropertyName("review")]
+        public string? Review { get; set; } = string.Empty;
+
 
         /// <summary>
         /// Gets or sets the modified by username.

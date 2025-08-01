@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestaurantManagement.Application.Dtos;
 using RestaurantManagement.Application.Interfaces;
 using RestaurantManagement.Domain.Entities;
@@ -11,6 +12,7 @@ namespace RestaurantManagement.Api.Controllers
     /// </summary>
     [Route("api/restaurant-profile")]
     [ApiController]
+    [Authorize]
     public class RestaurantProfileController : RestaurantManagementControllerBase
     {
         private readonly IRestaurantProfileService _restaurantProfileService;

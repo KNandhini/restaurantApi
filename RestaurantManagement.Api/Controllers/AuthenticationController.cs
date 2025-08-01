@@ -13,6 +13,7 @@ namespace RestaurantManagement.Api.Controllers
     /// </summary>
     [Route("api/authentication")]
     [ApiController]
+    [Authorize]
     public class AuthenticationController : RestaurantManagementControllerBase
     {
         private readonly IAuthService _authService;

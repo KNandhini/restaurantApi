@@ -11,6 +11,7 @@ using System.Collections;
 using System.Data.SqlClient;
 using System.Data.Common;
 using System.Text.Json;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace RestaurantManagement.Infrastructure.Repositories
 {
@@ -193,20 +194,35 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
         }
         /// <inheritdoc/>
-        public async Task UpdateOrderDetailDetails(UpdateFoodReceivedRequest orderDetails)
+        public async Task UpdateOrderDetailDetails(List<UpdateFoodReceivedRequest> orderDetails)
         {
             var spName = SPNames.SP_UPDATEISFOODRECEIVEDBYITEM; // Update the stored procedure name if necessary
-            
+
+
+            /* var parameters = new
+             {
+                 Id=orderDetails.Id,
+                 OrderId = orderDetails.OrderId,
+                 IsFoodReceived = orderDetails.IsFoodReceived,
+                 IsCheckOut = orderDetails.IsCheckOut,
+                 ModifiedBy = orderDetails.ModifiedBy,
+
+             };
+            */
+            // Serialize the list of FoodItem to JSON
+            var jsonOptions = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase // ensures keys are camelCase if needed
+            };
+
+            string itemsJson = JsonSerializer.Serialize(orderDetails, jsonOptions);
 
             var parameters = new
             {
-                Id=orderDetails.Id,
-                OrderId = orderDetails.OrderId,
-                IsFoodReceived = orderDetails.IsFoodReceived,
-                IsCheckOut = orderDetails.IsCheckOut,
-                ModifiedBy = orderDetails.ModifiedBy,
-
+                CheckoutItems = itemsJson  // must match @CheckoutItems in your SP
             };
+
+
 
 
             await Task.Factory.StartNew(() =>

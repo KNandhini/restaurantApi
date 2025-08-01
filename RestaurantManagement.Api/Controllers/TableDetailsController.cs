@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestaurantManagement.Application.Dtos;
 using RestaurantManagement.Application.Interfaces;
 using System.Data.SqlClient;
@@ -11,6 +12,7 @@ namespace RestaurantManagement.Api.Controllers
     /// </summary>
     [Route("api/tableDetailsDto")]
     [ApiController]
+    [Authorize]
     public class TableDetailsController : RestaurantManagementControllerBase
     {
         private readonly ITableDetailsService _TableDetailsService;

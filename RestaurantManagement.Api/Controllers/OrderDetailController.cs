@@ -4,6 +4,7 @@ using System.Net;
 using System.Data.SqlClient;
 using RestaurantManagement.Application.Interfaces;
 using RestaurantManagement.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RestaurantManagement.Api.Controllers
 {
@@ -12,6 +13,7 @@ namespace RestaurantManagement.Api.Controllers
     /// </summary>
     [Route("api/orderDetail")]
     [ApiController]
+    [Authorize]
     public class OrderDetailController : RestaurantManagementControllerBase
     {
 
@@ -155,7 +157,7 @@ namespace RestaurantManagement.Api.Controllers
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.InternalServerError)]
         [ProducesResponseType(typeof(ProblemDetails), (int)HttpStatusCode.ServiceUnavailable)]
-        public async Task<IActionResult> UpdateFoodReceivedByItem([FromBody] UpdateFoodReceivedRequestDto orderDetailDto)
+        public async Task<IActionResult> UpdateFoodReceivedByItem([FromBody] List<UpdateFoodReceivedRequestDto> orderDetailDto)
         {
             _logger.LogInformation("{MethodName} method is called", nameof(UpdateFoodReceivedByItem));
             //var OrderDetails = await _orderDetailService.GetOrderDetailsDetails((int?)orderDetailDto.OrderId);

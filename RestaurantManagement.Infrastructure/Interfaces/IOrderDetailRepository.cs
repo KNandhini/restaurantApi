@@ -36,7 +36,7 @@ namespace RestaurantManagement.Infrastructure.Interfaces
         /// <returns>
         /// Not returns anything.
         /// </returns>
-        Task UpdateOrderDetailDetails(UpdateFoodReceivedRequest orderDetails);
+        Task UpdateOrderDetailDetails(List<UpdateFoodReceivedRequest> orderDetails);
         /// <summary>
         /// Deletes a OrderDetails by its unique identifier.
         /// </summary>
