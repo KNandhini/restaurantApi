@@ -100,7 +100,8 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
                                 GrandTotal = Convert.ToDecimal(reader["GrandTotal"]),
                                 IsPaymentDone= Convert.ToBoolean(reader["IsPaymentDone"]),
-                                ItemDetails = new List<OrderItem>()
+                                ItemDetails = new List<OrderItem>(),
+                                TokenNumbers = reader["TokenNumbers"]?.ToString() 
                             };
                         }
 

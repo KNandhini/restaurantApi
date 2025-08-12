@@ -208,7 +208,8 @@ namespace RestaurantManagement.Application.Dtos
         /// </summary>
         [JsonPropertyName("isPaymentDone")]
         public bool? IsPaymentDone { get; set; } = false;
-
+        [JsonPropertyName("tokenNumbers")]
+        public string TokenNumbers { get; set; }=  string.Empty;
 
     }
 

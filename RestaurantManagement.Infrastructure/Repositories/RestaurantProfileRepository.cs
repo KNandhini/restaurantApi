@@ -56,7 +56,8 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 GSTNo = restaurantProfile.GSTNo,
                 CGST = restaurantProfile.CGST,   
                 SGST = restaurantProfile.SGST, 
-                ModifiedBy = restaurantProfile.ModifiedBy
+                ModifiedBy = restaurantProfile.ModifiedBy,
+                FSSAILicNo = restaurantProfile.FSSAILicNo
             };
             await Task.Factory.StartNew(() =>
                 _db.Connection.Execute(spName, parameters, commandType: CommandType.StoredProcedure));

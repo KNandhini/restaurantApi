@@ -53,5 +53,9 @@ namespace RestaurantManagement.Domain.Entities
 
         [JsonPropertyName("modifiedDate")]
         public DateTime? ModifiedDate { get; set; }
+
+        [JsonPropertyName("fssaiLicNo")]
+
+        public string FSSAILicNo { get; set; } = string.Empty;
     }
 }

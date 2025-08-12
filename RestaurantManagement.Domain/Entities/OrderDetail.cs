@@ -208,7 +208,8 @@ namespace RestaurantManagement.Domain.Entities
         /// </summary>
         [JsonPropertyName("isPaymentDone")]
         public bool? IsPaymentDone { get; set; } = false;
-
+        [JsonPropertyName("tokenNumbers")]
+        public string TokenNumbers { get; set; } = string.Empty;
 
     }
     public class OrderItem

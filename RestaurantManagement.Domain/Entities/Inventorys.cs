@@ -74,5 +74,11 @@ namespace RestaurantManagement.Domain.Entities
         /// </summary>
         [JsonPropertyName("modifiedDate")]
         public DateTime? ModifiedDate { get; set; } = null;
+
+        [JsonPropertyName("Quantity")]
+        public int Quantity { get; set; }
+
+        [JsonPropertyName("uom")]
+        public string Uom { get; set; } = string.Empty;
     }
 }
