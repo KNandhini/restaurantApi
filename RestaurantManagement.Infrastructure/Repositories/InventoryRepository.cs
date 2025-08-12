@@ -46,6 +46,8 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 ItemName = inventorys.ItemName,
                 IsVeg = inventorys.IsVeg,
                 Description = inventorys.Description,
+                Quantity = inventorys.Quantity,
+                Uom = inventorys.Uom,
                 CreatedBy = inventorys.CreatedBy,
 
             };
@@ -76,6 +78,8 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 ItemName = inventorys.ItemName,
                 IsVeg = inventorys.IsVeg,
                 Description = inventorys.Description,
+                Quantity = inventorys.Quantity,
+                Uom = inventorys.Uom,
                 ModifiedBy = inventorys.ModifiedBy,
 
             };

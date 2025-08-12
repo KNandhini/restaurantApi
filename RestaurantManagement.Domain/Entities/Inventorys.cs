@@ -51,6 +51,11 @@ namespace RestaurantManagement.Domain.Entities
         [JsonPropertyName("description")]
         public string Description { get; set; } = string.Empty;
 
+        [JsonPropertyName("Quantity")]
+        public int Quantity { get; set; }
+
+        [JsonPropertyName("uom")]
+        public string Uom { get; set; } = string.Empty;
         /// <summary>
         /// Gets or sets the user who created the record.
         /// </summary>
