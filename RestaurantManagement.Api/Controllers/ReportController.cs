@@ -52,6 +52,11 @@ namespace RestaurantManagement.Api.Controllers
             try
             {
                 var result = await _reportService.GetReportsDetails(reportType,startDate, endDate,category,subCategory,itemName,isVeg);
+                if (reportType?.Trim().ToLower() == "view")
+                {
+                    return Ok(result);  // result should be a List<object> or DataTable converted to list
+                }
+
                 return await PrepareFileForDownload(result.ToString(), "Excel");
             }
             catch (Exception ex)

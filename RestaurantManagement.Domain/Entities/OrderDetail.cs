@@ -313,10 +313,12 @@ namespace RestaurantManagement.Domain.Entities
         [JsonPropertyName("isActive")]
         public bool IsActive { get; set; } = true;
 
-      
+        [JsonPropertyName("isKotPrint")]
+        public bool IsKotPrint { get; set; } 
+
     }
 
-    
+
     public class UpdateFoodReceivedRequest
     {
 

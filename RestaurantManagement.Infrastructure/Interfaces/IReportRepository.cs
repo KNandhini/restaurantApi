@@ -18,7 +18,7 @@ namespace RestaurantManagement.Infrastructure.Interfaces
       /// <returns>
       /// The task result contains a collection of Reports if successful, or null if no Reportss match the provided identifier.
       /// </returns>
-        Task<string> GetReportsDetails(string reportType,DateTime? startDate, DateTime? endDate,
+        Task<object> GetReportsDetails(string reportType,DateTime? startDate, DateTime? endDate,
              string category,
             string subCategory,
             string itemName,

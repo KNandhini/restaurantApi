@@ -313,8 +313,9 @@ namespace RestaurantManagement.Application.Dtos
         /// </summary>
         [JsonPropertyName("isActive")]
         public bool IsActive { get; set; } = true;
+        [JsonPropertyName("isKotPrint")]
+        public bool IsKotPrint { get; set; } 
 
-       
     }
     
     public class UpdateFoodReceivedRequestDto

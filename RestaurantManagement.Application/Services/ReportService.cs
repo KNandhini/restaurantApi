@@ -31,7 +31,7 @@ namespace RestaurantManagement.Application.Services
             _mapper = mapper;
         }
         /// <inheritdoc/>
-        public async Task<string> GetReportsDetails(string reportType,DateTime? startDate, DateTime? endDate,
+        public async Task<object> GetReportsDetails(string reportType,DateTime? startDate, DateTime? endDate,
              string category,
             string subCategory,
             string itemName,

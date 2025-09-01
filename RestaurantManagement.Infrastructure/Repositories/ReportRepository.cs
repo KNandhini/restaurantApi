@@ -30,7 +30,7 @@ namespace RestaurantManagement.Infrastructure.Repositories
         }
 
         /// <inheritdoc/>
-        public async Task<string> GetReportsDetails(string reportType, DateTime? startDate, DateTime? endDate,
+        public async Task<object> GetReportsDetails(string reportType, DateTime? startDate, DateTime? endDate,
              string category,
             string subCategory,
             string itemName,
@@ -63,6 +63,17 @@ namespace RestaurantManagement.Infrastructure.Repositories
                     {
                         adapter.Fill(ds);
                         DataTable soldItemTable = ds.Tables[0];
+
+                        if (reportType?.Trim().ToLower() == "view")
+                        {
+                            // Convert DataTable → List of dictionary for JSON
+                            var list = soldItemTable.AsEnumerable()
+                                .Select(row => soldItemTable.Columns.Cast<DataColumn>()
+                                    .ToDictionary(col => col.ColumnName, col => row[col]))
+                                .ToList();
+
+                            return list;
+                        }
                         return GenerateExcelusingDatatable(soldItemTable,reportType);
                     }
                 }
@@ -73,11 +84,154 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 return ex.Message;
             }
         }
+        /* private static string GenerateExcelusingDatatable(DataTable dt, string reportType)
+         {
+             try
+             {
+                 string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "Data");
+                 string filePath = Path.Combine(folderPath, "Report.xlsx");
+
+                 using (XLWorkbook wb = new XLWorkbook())
+                 {
+                     var ws = wb.Worksheets.Add("Sold Items");
+
+                     int colCount = 1, rowCount = 1;
+                     var colmaxLength = dt.Columns.Count;
+                     var rowmaxLength = dt.Rows.Count+3;
+
+                     var titleRange = ws.Range(rowCount, colCount, rowCount, colmaxLength);
+                     // Add title (optional)
+                     titleRange.Merge();
+                     titleRange.Value = "AVINYA & INDUS SPICES";
+                     titleRange.Style.Font.Bold = true;
+                     titleRange.Style.Font.FontSize = 16;
+
+                     rowCount++;
+
+                     string subtitleText = "Report";
+                     if (!string.IsNullOrWhiteSpace(reportType))
+                     {
+                         if (reportType.Trim().ToLower() == "item")
+                             subtitleText = "Sold Item Report";
+                         else if (reportType.Trim().ToLower() == "sales")
+                             subtitleText = "Sold Sales Report";
+                     }
+                     var subtitleRange = ws.Range(rowCount, colCount, rowCount, colmaxLength);
+                     subtitleRange.Merge();
+                     subtitleRange.Value = subtitleText; 
+                     subtitleRange.Style.Font.Bold = true;
+                     subtitleRange.Style.Font.FontSize = 16;
+
+                     rowCount++;
+
+
+                     // Add column headers with "S.No"
+                     int rowStart = 3;
+
+                     for (int i = 0; i < dt.Columns.Count; i++)
+                     {
+                         ws.Cell(rowStart, i + 1).Value = dt.Columns[i].ColumnName;
+                     }
+
+                     // Add rows
+                     for (int i = 0; i < dt.Rows.Count; i++)
+                     {
+                         for (int j = 0; j < dt.Columns.Count; j++)
+                         {
+                             ws.Cell(rowStart + i + 1, j + 1).Value = dt.Rows[i][j]?.ToString();
+                         }
+                     }
+                     if (reportType.Trim().ToLower() == "sales")
+                     {
+                         string[] columnsToTotal = new[]
+                         {
+                         "No of Person", "Parcel Amount", "Sub Total", "Discount Amount","Net Amount", "CGST", "SGST", "Grand Total"
+     };
+
+                         int totalRowIndex = dt.Rows.Count + rowStart + 1;
+
+                         int startTotalCol = dt.Columns.IndexOf("No of Person"); 
+
+                         if (startTotalCol > 1)
+                         {
+                             ws.Range(totalRowIndex, 1, totalRowIndex, startTotalCol).Merge();
+                             ws.Cell(totalRowIndex, 1).Value = "TOTAL";
+                             ws.Cell(totalRowIndex, 1).Style.Font.Bold = true;
+                             ws.Cell(totalRowIndex, 1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                         }
+
+                         // ➕ Add totals from "No of Person" column onward
+                         foreach (DataColumn column in dt.Columns)
+                         {
+                             if (columnsToTotal.Contains(column.ColumnName))
+                             {
+                                 double total = 0;
+                                 foreach (DataRow row in dt.Rows)
+                                 {
+                                     if (double.TryParse(row[column.ColumnName]?.ToString(), out double value))
+                                         total += value;
+                                 }
+
+                                 int currentCol = dt.Columns.IndexOf(column) + 1;
+                                 ws.Cell(totalRowIndex, currentCol).Value = total;
+                                 ws.Cell(totalRowIndex, currentCol).Style.Font.Bold = true;
+                             }
+                         }
+
+
+                         var totalRow = ws.Range(totalRowIndex, 1, totalRowIndex, dt.Columns.Count);
+                         totalRow.Style.Border.TopBorder = XLBorderStyleValues.Thin;
+                         totalRow.Style.Border.BottomBorder = XLBorderStyleValues.Medium;
+                         totalRow.Style.Fill.BackgroundColor = XLColor.LightGray;
+                     }
+
+                     // Auto-adjust columns
+                     ws.Columns().AdjustToContents();
+                     var maintitleRange = ws.Range(rowCount, colCount, rowmaxLength, colmaxLength);
+                     maintitleRange.Style.Border.TopBorder = XLBorderStyleValues.Thick;
+                     maintitleRange.Style.Border.BottomBorder = XLBorderStyleValues.Thick;
+                     maintitleRange.Style.Border.LeftBorder = XLBorderStyleValues.Thick;
+                     maintitleRange.Style.Border.RightBorder = XLBorderStyleValues.Thick;
+                     var usedRange = ws.RangeUsed(); // Gets the full used range of the worksheet
+
+                     // Apply border to all cells in the used range
+                     usedRange.Style.Border.TopBorder = XLBorderStyleValues.Thin;
+                     usedRange.Style.Border.BottomBorder = XLBorderStyleValues.Thin;
+                     usedRange.Style.Border.LeftBorder = XLBorderStyleValues.Thin;
+                     usedRange.Style.Border.RightBorder = XLBorderStyleValues.Thin;
+
+
+                     subtitleRange.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                     subtitleRange.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                     subtitleRange.Style.Border.TopBorder = XLBorderStyleValues.Thick;
+                     subtitleRange.Style.Border.BottomBorder = XLBorderStyleValues.Thick;
+                     subtitleRange.Style.Border.LeftBorder = XLBorderStyleValues.Thick;
+                     subtitleRange.Style.Border.RightBorder = XLBorderStyleValues.Thick;
+                     titleRange.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                     titleRange.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                     titleRange.Style.Border.TopBorder = XLBorderStyleValues.Thick;
+                     titleRange.Style.Border.BottomBorder = XLBorderStyleValues.Thick;
+                     titleRange.Style.Border.LeftBorder = XLBorderStyleValues.Thick;
+                     titleRange.Style.Border.RightBorder = XLBorderStyleValues.Thick;
+                     // Save Excel
+                     //filePath = Path.Combine(folderPath, "sp_GetSoldItemwithPriceReport.xlsx");
+                     wb.SaveAs(filePath);
+                     return filePath;
+                 }
+             }
+             catch (Exception ex)
+             {
+                 return ex.Message;
+             }
+         }*/
         private static string GenerateExcelusingDatatable(DataTable dt, string reportType)
         {
             try
             {
                 string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "Data");
+                if (!Directory.Exists(folderPath))
+                    Directory.CreateDirectory(folderPath);
+
                 string filePath = Path.Combine(folderPath, "Report.xlsx");
 
                 using (XLWorkbook wb = new XLWorkbook())
@@ -85,18 +239,22 @@ namespace RestaurantManagement.Infrastructure.Repositories
                     var ws = wb.Worksheets.Add("Sold Items");
 
                     int colCount = 1, rowCount = 1;
-                    var colmaxLength = dt.Columns.Count;
-                    var rowmaxLength = dt.Rows.Count+3;
+                    var colmaxLength = dt.Columns.Count + 2; // since "Mode of Payment" expands to 3 cols
+                    var rowmaxLength = dt.Rows.Count + 3;
 
+                    // 🔹 Title
                     var titleRange = ws.Range(rowCount, colCount, rowCount, colmaxLength);
-                    // Add title (optional)
                     titleRange.Merge();
                     titleRange.Value = "AVINYA & INDUS SPICES";
                     titleRange.Style.Font.Bold = true;
                     titleRange.Style.Font.FontSize = 16;
-                   
+                    titleRange.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                    titleRange.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                    titleRange.Style.Border.OutsideBorder = XLBorderStyleValues.Thick;
+
                     rowCount++;
-                    
+
+                    // 🔹 Subtitle
                     string subtitleText = "Report";
                     if (!string.IsNullOrWhiteSpace(reportType))
                     {
@@ -105,105 +263,147 @@ namespace RestaurantManagement.Infrastructure.Repositories
                         else if (reportType.Trim().ToLower() == "sales")
                             subtitleText = "Sold Sales Report";
                     }
+
                     var subtitleRange = ws.Range(rowCount, colCount, rowCount, colmaxLength);
                     subtitleRange.Merge();
-                    subtitleRange.Value = subtitleText; 
+                    subtitleRange.Value = subtitleText;
                     subtitleRange.Style.Font.Bold = true;
                     subtitleRange.Style.Font.FontSize = 16;
+                    subtitleRange.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                    subtitleRange.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
+                    subtitleRange.Style.Border.OutsideBorder = XLBorderStyleValues.Thick;
 
                     rowCount++;
 
-                    
-                    // Add column headers with "S.No"
+                    // 🔹 Column headers
                     int rowStart = 3;
-                  
-                    for (int i = 0; i < dt.Columns.Count; i++)
-                    {
-                        ws.Cell(rowStart, i + 1).Value = dt.Columns[i].ColumnName;
-                    }
+                    int excelCol = 1;
 
-                    // Add rows
-                    for (int i = 0; i < dt.Rows.Count; i++)
+                    foreach (DataColumn column in dt.Columns)
                     {
-                        for (int j = 0; j < dt.Columns.Count; j++)
+                        if (column.ColumnName == "Mode of Payment")
                         {
-                            ws.Cell(rowStart + i + 1, j + 1).Value = dt.Rows[i][j]?.ToString();
+                            ws.Cell(rowStart, excelCol).Value = "Cash";
+                            ws.Cell(rowStart, excelCol + 1).Value = "Card";
+                            ws.Cell(rowStart, excelCol + 2).Value = "UPI";
+                            excelCol += 3;
+                        }
+                        else
+                        {
+                            ws.Cell(rowStart, excelCol).Value = column.ColumnName;
+                            excelCol++;
                         }
                     }
+
+                    // 🔹 Fill rows
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        excelCol = 1;
+
+                        foreach (DataColumn column in dt.Columns)
+                        {
+                            //Here’s the corrected section of your code:
+
+                            if (column.ColumnName == "Mode of Payment")
+                            {
+                                string cashVal = "-", cardVal = "-", upiVal = "-";
+                                string paymentValue = dt.Rows[i][column]?.ToString()?.Trim();
+
+                                // ✅ Always read Sub Total
+                                double.TryParse(dt.Rows[i]["Sub Total"]?.ToString(), out double subTotal);
+
+                                if (!string.IsNullOrWhiteSpace(paymentValue))
+                                {
+                                    if (paymentValue.Contains(":")) // Case: "Cash:100, Upi:58, Card:50"
+                                    {
+                                        var parts = paymentValue.Split(',');
+                                        foreach (var part in parts)
+                                        {
+                                            var keyValue = part.Split(':');
+                                            if (keyValue.Length == 2)
+                                            {
+                                                string key = keyValue[0].Trim().ToLower();
+                                                string rawVal = keyValue[1].Replace("'", "").Trim();
+                                                if (double.TryParse(rawVal, out double val))
+                                                {
+                                                    if (key == "cash") cashVal = val.ToString();
+                                                    else if (key == "card") cardVal = val.ToString();
+                                                    else if (key == "upi") upiVal = val.ToString();
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else // Case: only "Cash" or "Card" or "UPI"
+                                    {
+                                        string key = paymentValue.ToLower();
+                                        if (key == "cash") cashVal = subTotal.ToString();
+                                        else if (key == "card") cardVal = subTotal.ToString();
+                                        else if (key == "upi") upiVal = subTotal.ToString();
+                                    }
+                                }
+
+                                // ✅ Assign strings directly
+                                ws.Cell(rowStart + i + 1, excelCol).Value = cashVal;
+                                ws.Cell(rowStart + i + 1, excelCol + 1).Value = cardVal;
+                                ws.Cell(rowStart + i + 1, excelCol + 2).Value = upiVal;
+
+                                excelCol += 3;
+                            }
+                            else
+                            {
+                                ws.Cell(rowStart + i + 1, excelCol).Value = dt.Rows[i][column]?.ToString();
+                                excelCol++;
+                            }
+                        }
+                    }
+
+                    // 🔹 Totals for Sales Report
                     if (reportType.Trim().ToLower() == "sales")
                     {
                         string[] columnsToTotal = new[]
                         {
-                        "No of Person", "Parcel Amount", "Sub Total", "Discount Amount","Net Amount", "CGST", "SGST", "Grand Total"
-    };
+                    "No of Person", "Parcel Amount", "Sub Total", "Discount Amount",
+                    "Net Amount", "CGST", "SGST", "Grand Total", "Cash", "Card", "UPI"
+                };
 
                         int totalRowIndex = dt.Rows.Count + rowStart + 1;
+                        ws.Cell(totalRowIndex, 1).Value = "TOTAL";
+                        ws.Cell(totalRowIndex, 1).Style.Font.Bold = true;
+                        ws.Cell(totalRowIndex, 1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
 
-                        int startTotalCol = dt.Columns.IndexOf("No of Person"); 
-
-                        if (startTotalCol > 1)
+                        foreach (IXLCell headerCell in ws.Row(rowStart).CellsUsed())
                         {
-                            ws.Range(totalRowIndex, 1, totalRowIndex, startTotalCol).Merge();
-                            ws.Cell(totalRowIndex, 1).Value = "TOTAL";
-                            ws.Cell(totalRowIndex, 1).Style.Font.Bold = true;
-                            ws.Cell(totalRowIndex, 1).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                        }
-
-                        // ➕ Add totals from "No of Person" column onward
-                        foreach (DataColumn column in dt.Columns)
-                        {
-                            if (columnsToTotal.Contains(column.ColumnName))
+                            string colName = headerCell.Value.ToString();
+                            if (columnsToTotal.Contains(colName))
                             {
+                                int colIndex = headerCell.Address.ColumnNumber;
                                 double total = 0;
-                                foreach (DataRow row in dt.Rows)
+
+                                for (int r = rowStart + 1; r <= rowStart + dt.Rows.Count; r++)
                                 {
-                                    if (double.TryParse(row[column.ColumnName]?.ToString(), out double value))
-                                        total += value;
+                                    double.TryParse(ws.Cell(r, colIndex).Value.ToString(), out double val);
+                                    total += val;
                                 }
 
-                                int currentCol = dt.Columns.IndexOf(column) + 1;
-                                ws.Cell(totalRowIndex, currentCol).Value = total;
-                                ws.Cell(totalRowIndex, currentCol).Style.Font.Bold = true;
+                                ws.Cell(totalRowIndex, colIndex).Value = total;
+                                ws.Cell(totalRowIndex, colIndex).Style.Font.Bold = true;
                             }
                         }
 
-                        
-                        var totalRow = ws.Range(totalRowIndex, 1, totalRowIndex, dt.Columns.Count);
+                        var totalRow = ws.Range(totalRowIndex, 1, totalRowIndex, colmaxLength);
                         totalRow.Style.Border.TopBorder = XLBorderStyleValues.Thin;
                         totalRow.Style.Border.BottomBorder = XLBorderStyleValues.Medium;
                         totalRow.Style.Fill.BackgroundColor = XLColor.LightGray;
                     }
 
-                    // Auto-adjust columns
+                    // 🔹 Formatting
                     ws.Columns().AdjustToContents();
-                    var maintitleRange = ws.Range(rowCount, colCount, rowmaxLength, colmaxLength);
-                    maintitleRange.Style.Border.TopBorder = XLBorderStyleValues.Thick;
-                    maintitleRange.Style.Border.BottomBorder = XLBorderStyleValues.Thick;
-                    maintitleRange.Style.Border.LeftBorder = XLBorderStyleValues.Thick;
-                    maintitleRange.Style.Border.RightBorder = XLBorderStyleValues.Thick;
-                    var usedRange = ws.RangeUsed(); // Gets the full used range of the worksheet
-
-                    // Apply border to all cells in the used range
+                    var usedRange = ws.RangeUsed();
                     usedRange.Style.Border.TopBorder = XLBorderStyleValues.Thin;
                     usedRange.Style.Border.BottomBorder = XLBorderStyleValues.Thin;
                     usedRange.Style.Border.LeftBorder = XLBorderStyleValues.Thin;
                     usedRange.Style.Border.RightBorder = XLBorderStyleValues.Thin;
-                   
 
-                    subtitleRange.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                    subtitleRange.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
-                    subtitleRange.Style.Border.TopBorder = XLBorderStyleValues.Thick;
-                    subtitleRange.Style.Border.BottomBorder = XLBorderStyleValues.Thick;
-                    subtitleRange.Style.Border.LeftBorder = XLBorderStyleValues.Thick;
-                    subtitleRange.Style.Border.RightBorder = XLBorderStyleValues.Thick;
-                    titleRange.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                    titleRange.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
-                    titleRange.Style.Border.TopBorder = XLBorderStyleValues.Thick;
-                    titleRange.Style.Border.BottomBorder = XLBorderStyleValues.Thick;
-                    titleRange.Style.Border.LeftBorder = XLBorderStyleValues.Thick;
-                    titleRange.Style.Border.RightBorder = XLBorderStyleValues.Thick;
-                    // Save Excel
-                    //filePath = Path.Combine(folderPath, "sp_GetSoldItemwithPriceReport.xlsx");
                     wb.SaveAs(filePath);
                     return filePath;
                 }
@@ -213,6 +413,11 @@ namespace RestaurantManagement.Infrastructure.Repositories
                 return ex.Message;
             }
         }
+
+
+
+
+
 
     }
 }

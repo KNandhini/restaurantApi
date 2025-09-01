@@ -118,7 +118,8 @@ namespace RestaurantManagement.Infrastructure.Repositories
                             Status = (reader["status"])?.ToString(),
                            
                             IsActive = Convert.ToBoolean(reader["isActive"]),
-                           
+                            IsKotPrint = Convert.ToBoolean(reader["isKotPrint"]),
+
                         };
 
                         order.ItemDetails.Add(item);
