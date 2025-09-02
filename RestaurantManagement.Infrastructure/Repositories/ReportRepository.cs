@@ -239,7 +239,19 @@ namespace RestaurantManagement.Infrastructure.Repositories
                     var ws = wb.Worksheets.Add("Sold Items");
 
                     int colCount = 1, rowCount = 1;
-                    var colmaxLength = dt.Columns.Count + 2; // since "Mode of Payment" expands to 3 cols
+                    //   var colmaxLength = dt.Columns.Count + 2; // since "Mode of Payment" expands to 3 cols
+
+                    int colmaxLength = 0;
+
+                    // 🔍 Dynamically calculate correct column count (handles "Mode of Payment" case)
+                    foreach (DataColumn column in dt.Columns)
+                    {
+                        if (column.ColumnName == "Mode of Payment")
+                            colmaxLength += 3; // Cash, Card, UPI
+                        else
+                            colmaxLength += 1;
+                    }
+
                     var rowmaxLength = dt.Rows.Count + 3;
 
                     // 🔹 Title
@@ -351,7 +363,27 @@ namespace RestaurantManagement.Infrastructure.Repositories
                             }
                             else
                             {
-                                ws.Cell(rowStart + i + 1, excelCol).Value = dt.Rows[i][column]?.ToString();
+                                //ws.Cell(rowStart + i + 1, excelCol).Value = dt.Rows[i][column]?.ToString();
+                                // ✅ Handle BillDate column separately
+                                if (column.ColumnName.Equals("Bill Date", StringComparison.OrdinalIgnoreCase))
+                                {
+
+                                    if (DateTime.TryParse(dt.Rows[i][column]?.ToString(), out DateTime billDate))
+                                    {
+                                        // ✅ Assign DateTime and apply number format
+                                        var cell = ws.Cell(rowStart + i + 1, excelCol);
+                                        cell.Value = billDate;
+                                        cell.Style.DateFormat.Format = "dd-MM-yyyy";
+                                    }
+                                    else
+                                    {
+                                        ws.Cell(rowStart + i + 1, excelCol).Value = dt.Rows[i][column]?.ToString();
+                                    }
+                                }
+                                else
+                                {
+                                    ws.Cell(rowStart + i + 1, excelCol).Value = dt.Rows[i][column]?.ToString();
+                                }
                                 excelCol++;
                             }
                         }
