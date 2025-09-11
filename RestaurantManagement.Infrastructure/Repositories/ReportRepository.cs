@@ -361,28 +361,52 @@ namespace RestaurantManagement.Infrastructure.Repositories
 
                                 excelCol += 3;
                             }
+                            /* else
+                             {
+                                 //ws.Cell(rowStart + i + 1, excelCol).Value = dt.Rows[i][column]?.ToString();
+                                 // ✅ Handle BillDate column separately
+                                 if (column.ColumnName.Equals("Bill Date", StringComparison.OrdinalIgnoreCase))
+                                 {
+
+                                     if (DateTime.TryParse(dt.Rows[i][column]?.ToString(), out DateTime billDate))
+                                     {
+                                         // ✅ Assign DateTime and apply number format
+                                         var cell = ws.Cell(rowStart + i + 1, excelCol);
+                                         cell.Value = billDate;
+                                         cell.Style.DateFormat.Format = "dd-MM-yyyy";
+                                     }
+                                     else
+                                     {
+                                         ws.Cell(rowStart + i + 1, excelCol).Value = dt.Rows[i][column]?.ToString();
+                                     }
+                                 }
+                                 else
+                                 {
+                                     ws.Cell(rowStart + i + 1, excelCol).Value = dt.Rows[i][column]?.ToString();
+                                 }
+                                 excelCol++;
+                             }*/
                             else
                             {
-                                //ws.Cell(rowStart + i + 1, excelCol).Value = dt.Rows[i][column]?.ToString();
-                                // ✅ Handle BillDate column separately
+                                var cell = ws.Cell(rowStart + i + 1, excelCol);
+
                                 if (column.ColumnName.Equals("Bill Date", StringComparison.OrdinalIgnoreCase))
                                 {
-
-                                    if (DateTime.TryParse(dt.Rows[i][column]?.ToString(), out DateTime billDate))
+                                    // ✅ Format the date into 12-hour format with AM/PM if it's a valid DateTime
+                                    var rawValue = dt.Rows[i][column]?.ToString();
+                                    if (DateTime.TryParse(rawValue, out DateTime billDate))
                                     {
-                                        // ✅ Assign DateTime and apply number format
-                                        var cell = ws.Cell(rowStart + i + 1, excelCol);
-                                        cell.Value = billDate;
-                                        cell.Style.DateFormat.Format = "dd-MM-yyyy";
+                                        cell.Value = billDate.ToString("dd-MM-yyyy hh:mm:ss tt");
                                     }
                                     else
                                     {
-                                        ws.Cell(rowStart + i + 1, excelCol).Value = dt.Rows[i][column]?.ToString();
+                                        // If parsing fails, just print the raw value
+                                        cell.Value = rawValue;
                                     }
                                 }
                                 else
                                 {
-                                    ws.Cell(rowStart + i + 1, excelCol).Value = dt.Rows[i][column]?.ToString();
+                                    cell.Value = dt.Rows[i][column]?.ToString();
                                 }
                                 excelCol++;
                             }
